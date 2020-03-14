@@ -306,7 +306,7 @@
             
 <div class='new-meta-item author'>
   <a href="https://liizhi.cn" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
     <p>Chemlez</p>
   </a>
 </div>
@@ -386,9 +386,9 @@
 </li>
 </ul>
 <p>接下来我们再看一组图（上课ppt图片）：</p>
-<p><img src="https://s2.ax1x.com/2019/10/22/KGgqHg.png" alt="赋值引用"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2019/10/22/KGgqHg.png" alt="赋值引用"></p>
 <p>这里的a = {1:[1,2,3]}字典类型。b = a : 赋值引用，a 和 b 都指向同一个对象。可以看出，a,b此刻都指向同一个对象，所以改变b的内容，就是在改变a,b同时所指向的对象的内容，可以理解成b就是a的一个别名。</p>
-<p><img src="https://s2.ax1x.com/2019/10/22/KG2kE4.png" alt="浅拷贝"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2019/10/22/KG2kE4.png" alt="浅拷贝"></p>
 <p>这里 a = {1:[1,2,3]} , b = a.copy()，这里就是一种浅拷贝的方式。可以看出a 和 b 是一个独立的对象，但他们的子对象还是指向统一对象（是引用）。所以在这里L,M就是对象当中的一个子对象（[1,2,3]）便是这里的子对象。</p>
 <p>举个上述的例子：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">a = &#123;<span class="number">1</span>:[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],<span class="string">'北京'</span>:<span class="string">'天安门'</span>&#125;</span><br><span class="line">b = copy.copy(a) <span class="comment"># b = &#123;1：[1,2,3],'北京':'天安门'&#125;</span></span><br><span class="line">b[<span class="number">1</span>].append(<span class="number">4</span>) </span><br><span class="line">b[<span class="string">'上海'</span>] = <span class="string">'东方明珠'</span></span><br><span class="line">b[<span class="string">'北京'</span>] = <span class="string">'鸟巢'</span></span><br><span class="line">print(<span class="string">'输出：a = &#123;&#125;,b = &#123;&#125;'</span>.format(a,b))</span><br><span class="line"></span><br><span class="line">-----</span><br><span class="line">输出：a = &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="string">'北京'</span>: <span class="string">'天安门'</span>&#125;,b = &#123;<span class="number">1</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>], <span class="string">'北京'</span>: <span class="string">'鸟巢'</span>, <span class="string">'上海'</span>: <span class="string">'东方明珠'</span>&#125;</span><br></pre></td></tr></table></figure>
@@ -396,7 +396,7 @@
 <p><code>b = copy.copy(a)</code> 使得b为单独一个对象，但是它和a的子对象指向统一对象。这里的子对象就是[1,2,3]（列表子对象）。故当改变b中1键对中的值[1,2,3]时，a也会改变（统一子对象)。但向b中添加值时，便不会对a造成影响，因为这是b自身的对象所拥有的值（和a没有关系)。</p>
 <p>那么如何拷贝一个a，但对这个拷贝的对象任意操作时，不会对a产生任何的影响呢？答：采用深拷贝。</p>
 <p>如图:</p>
-<p><img src="https://s2.ax1x.com/2019/10/23/KY6iE4.png" alt="深拷贝"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2019/10/23/KY6iE4.png" alt="深拷贝"></p>
 <p>从图中可以清楚的看出：深度拷贝, a 和 b 完全拷贝了父对象及其子对象，两者是完全独立的。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> copy</span><br><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]]    <span class="comment">#原始对象  </span></span><br><span class="line">b = a                           <span class="comment">#赋值，传对象的引用</span></span><br><span class="line">c = copy.copy(a)                <span class="comment">#对象拷贝，浅拷贝</span></span><br><span class="line">d = copy.deepcopy(a)            <span class="comment">#对象拷贝，深拷贝</span></span><br><span class="line">a.append(<span class="number">5</span>)                     <span class="comment">#修改对象a</span></span><br><span class="line">a[<span class="number">4</span>].append(<span class="string">'c'</span>)                <span class="comment">#修改对象a中的['a', 'b']数组对象</span></span><br><span class="line"></span><br><span class="line">print( <span class="string">'a = '</span>, a )</span><br><span class="line">print( <span class="string">'b = '</span>, b )</span><br><span class="line">print( <span class="string">'c = '</span>, c )</span><br><span class="line">print( <span class="string">'d = '</span>, d )</span><br><span class="line"></span><br><span class="line">--------</span><br><span class="line">a =  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], <span class="number">5</span>]</span><br><span class="line">b =  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>], <span class="number">5</span>] <span class="comment"># 给a起了一个别名b，本质相同，故b和a的变化相同</span></span><br><span class="line">c =  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>]]    <span class="comment"># c中子对象发生了变化 --&gt;浅拷贝</span></span><br><span class="line">d =  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]]         <span class="comment"># a的改变和d无关 --&gt;深拷贝</span></span><br></pre></td></tr></table></figure>
 
@@ -438,6 +438,28 @@
 
   
 
+  
+    
+    
+  
+
+  <section class="widget related_posts  desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span class='name'>相关文章</span>
+    
+  </header>
+
+
+    <div class="content">
+      
+    </div>
+  </section>
+
+
+  
+
 
           
         </div>
@@ -447,8 +469,6 @@
 
   <section class='meta' id="footer-meta">
     <div class='new-meta-box'>
-      
-        
       
         
           <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-14T22:11:34+08:00">
@@ -481,7 +501,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
           
         </a>
       
@@ -502,7 +522,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
           
         </a>
       
@@ -523,7 +543,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
           
         </a>
       
@@ -531,7 +551,7 @@
       
         
         <div class='hoverbox'>
-          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
           <div class='target'>
             <img src="data:image/png;base64,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">
           </div>
@@ -617,7 +637,7 @@
     
     
 
-<section class="widget blogger shadow floatable desktop moblie">
+<section class="widget blogger shadow floatable desktop">
   <div class='content'>
     
       <div class='avatar'>
@@ -669,7 +689,7 @@
     
   
 
-  <section class="widget category shadow floatable desktop mobile">
+  <section class="widget category shadow floatable desktop">
     
   <header>
     
@@ -708,7 +728,7 @@
     
   
 
-  <section class="widget tagcloud shadow floatable desktop mobile">
+  <section class="widget tagcloud shadow floatable desktop">
     
   <header>
     
@@ -1009,5 +1029,5 @@
 
 
   <script>setLoadingBarProgress(100);</script>
-</body>
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
 </html>

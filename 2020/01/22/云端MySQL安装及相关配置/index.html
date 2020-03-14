@@ -304,7 +304,7 @@
             
 <div class='new-meta-item author'>
   <a href="https://liizhi.cn" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
     <p>Chemlez</p>
   </a>
 </div>
@@ -359,13 +359,13 @@
         <div class="article-entry" itemprop="articleBody">
           
           <p>由于自己的阿里云账号申请不足6个月，能够享受新用户云服务器ECS89元一年的优惠政策，所以就购买了一台云服务器，作为日常学习的使用。本文用来记录此次装载云服务器所遇到的一些问题及MySQL的安装过程。</p>
-<h4 id="一、云服务器的选配及配置"><a href="#一、云服务器的选配及配置" class="headerlink" title="一、云服务器的选配及配置"></a>一、云服务器的选配及配置</h4><p>此次我选购的服务器网址:<a href="http://aliyun.langsan.com/?bd_vid=8575091722087683835" target="_blank" rel="noopener">http://aliyun.langsan.com/?bd_vid=8575091722087683835</a>。下图为此次所购的云服务器配置:  <img src="https://s2.ax1x.com/2020/01/22/1AMtQs.png" alt="服务器配置"> </p>
+<h4 id="一、云服务器的选配及配置"><a href="#一、云服务器的选配及配置" class="headerlink" title="一、云服务器的选配及配置"></a>一、云服务器的选配及配置</h4><p>此次我选购的服务器网址:<a href="http://aliyun.langsan.com/?bd_vid=8575091722087683835" target="_blank" rel="noopener">http://aliyun.langsan.com/?bd_vid=8575091722087683835</a>。下图为此次所购的云服务器配置:  <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AMtQs.png" alt="服务器配置"> </p>
 <a id="more"></a>
 
 
 
 <p>后续步骤为：提货券的兑换；地域站点的选取以及系统的选配。这里我选取的为上海的站点（大陆境内站点随便选没什么差别），系统选装的为Centos7(具体到7.x没什么区别)。然后就是阿里云那边的自动配置了。购买及配置较为简单，全部为阿里云的傻瓜一站式操作。</p>
-<h4 id="二、安全组的设置"><a href="#二、安全组的设置" class="headerlink" title="二、安全组的设置"></a>二、安全组的设置</h4><p>第一次服务器的使用，需要进行安全组的设置。进入到自己的控制台-实例与镜像-实例。这个时候就能够看到自己的服务器。勾选此台服务器：<br><img src="https://s2.ax1x.com/2020/01/22/1AlfPO.png" alt="">  </p>
+<h4 id="二、安全组的设置"><a href="#二、安全组的设置" class="headerlink" title="二、安全组的设置"></a>二、安全组的设置</h4><p>第一次服务器的使用，需要进行安全组的设置。进入到自己的控制台-实例与镜像-实例。这个时候就能够看到自己的服务器。勾选此台服务器：<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AlfPO.png" alt="">  </p>
 <ul>
 <li><p>依次设置实例ID、重置实例密码；  </p>
 </li>
@@ -374,7 +374,7 @@
 </li>
 <li><p>网络与安全组。将此实例加入到安全组里。  </p>
 </li>
-<li><p>设置安全组规则  <img src="https://s2.ax1x.com/2020/01/22/1A3K1g.png" alt="">  在安全组规则中，采用快速创建规则。规则方向：入方向/出方向，均可采用，用于控制服务器访入与访出。授权策略：允许/禁止（不解释）。常用端口（TCP）:控制端口的访入与访出（根据自己的习惯与用处）。授权对象:默认为0.0.0.0/0。至此服务器基本配置到此结束。<br>回到控制台实例中，点击远程连接。区域即为所选区域（一般默认不变）；端口默认为22；用户名默认为root；密码是之前设置的实例密码。</p>
+<li><p>设置安全组规则  <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1A3K1g.png" alt="">  在安全组规则中，采用快速创建规则。规则方向：入方向/出方向，均可采用，用于控制服务器访入与访出。授权策略：允许/禁止（不解释）。常用端口（TCP）:控制端口的访入与访出（根据自己的习惯与用处）。授权对象:默认为0.0.0.0/0。至此服务器基本配置到此结束。<br>回到控制台实例中，点击远程连接。区域即为所选区域（一般默认不变）；端口默认为22；用户名默认为root；密码是之前设置的实例密码。</p>
 </li>
 </ul>
 <h4 id="三、本机ssh连接服务器免密设置"><a href="#三、本机ssh连接服务器免密设置" class="headerlink" title="三、本机ssh连接服务器免密设置"></a>三、本机ssh连接服务器免密设置</h4><p>上一部分中，我们在阿里云的网页实例中，远程连接到我们的服务器。但是，每当我们需要用到服务器时，便要通过阿里云账号登录再来连接就显得比较麻烦。这里，通过ssh的命令在自己电脑终端来远程连接自己的服务器。<br>终端命令：<code>ssh root@ip</code>  </p>
@@ -382,12 +382,12 @@
 <li>root:远程连接的用户名；一般默认不变即为root。  </li>
 <li>ip:自己服务器公网ip。<br>回车后，输入自己的root用户实例密码即可连接。<br><strong>注：Linux、Mac系统终端自带ssh命令；Windows系统不自带ssh命令，需要借助putty或Xshell客户端软件使用。</strong><br>但是，每次我们在自己的电脑连接到服务器都需要通过ip地址，再由密码登录也比较麻烦。所以这里再介绍本机免密码登录服务器的方式。<br>思路：将自己的公有密匙添加到服务器端。  </li>
 </ul>
-<h5 id="1-在本地生成一对公匙-密匙"><a href="#1-在本地生成一对公匙-密匙" class="headerlink" title="1.在本地生成一对公匙-密匙"></a>1.在本地生成一对公匙-密匙</h5><p><code>ssh-keygen -t rsa</code><br>采用默认目录，不设置密码，一路回车即可。<br><img src="https://s2.ax1x.com/2020/01/22/1AYUaR.png" alt="">  最终会在~/.ssh目录下生成id_rsa(密匙)；id_rsa.pub(公匙)。  </p>
+<h5 id="1-在本地生成一对公匙-密匙"><a href="#1-在本地生成一对公匙-密匙" class="headerlink" title="1.在本地生成一对公匙-密匙"></a>1.在本地生成一对公匙-密匙</h5><p><code>ssh-keygen -t rsa</code><br>采用默认目录，不设置密码，一路回车即可。<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AYUaR.png" alt="">  最终会在~/.ssh目录下生成id_rsa(密匙)；id_rsa.pub(公匙)。  </p>
 <h5 id="2-将公匙部署至服务器上"><a href="#2-将公匙部署至服务器上" class="headerlink" title="2.将公匙部署至服务器上"></a>2.将公匙部署至服务器上</h5><p>在本地命令执行：<br>方式一:<code>scp ~/.ssh/id_rsa.pub root@公网IP地址:～/.ssh/authorized_keys</code><br>方式二：<code>ssh-copy-id ~/.ssh/id_rsa.pub root@公网IP地址</code><br>以上两种方式即将本地公匙内容复制到远程服务器<code>～/.ssh/authorized_keys</code>的文件中。</p>
 <p>至此，再次登录服务器只需一句ssh终端命令即可，不需要再输入密码。<br>到这里还不是最简洁的一种登录方式，因为我们还需要输入root用户账号，ip地址。所以后续还有更简洁的方式：<br>本地需要保存ssh登录主机的相关信息，在本地主机用户根目录下的.ssh文件内创建config文件，用于保存ssh登陆主机的相关信息<br><code>vim config</code>（如果没有vim可以手动到此目下创建config文件）<br>编辑内容：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host name #AAAAA为服务器主机名</span><br><span class="line">HostName 39.97.170.231 #写服务器ip地址</span><br><span class="line">User root #root为登陆用户名</span><br><span class="line">Port 22 #主机端口，默认是22</span><br><span class="line">IdentityFile &#x2F;Users&#x2F;.ssh&#x2F;id_rsa #自己生成的私钥的文件路径</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意：Host name是之前服务器设置中设置的实例id/名称</strong><br>实例如下：<br><img src="https://s2.ax1x.com/2020/01/22/1AUC5R.png" alt="">  </p>
+<p><strong>注意：Host name是之前服务器设置中设置的实例id/名称</strong><br>实例如下：<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AUC5R.png" alt="">  </p>
 <h5 id="3-在服务器设置自动检验的信息"><a href="#3-在服务器设置自动检验的信息" class="headerlink" title="3.在服务器设置自动检验的信息"></a>3.在服务器设置自动检验的信息</h5><p>打开/etc/ssh/sshd_config文件<br><code>vim /etc/ssh/sshd_config</code>找到  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PubkeyAuthentication yes </span><br><span class="line">AuthorizedKeysFile .ssh&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
 
@@ -426,7 +426,7 @@
 <li><p>修改mysql库里边的user表，限制root用户只能从哪个ip登录<br><code>update mysql.user set host=&#39;localhost&#39; where user=&#39;root&#39;;</code></p>
 </li>
 </ol>
-<h4 id="MySQL的远程连接"><a href="#MySQL的远程连接" class="headerlink" title="MySQL的远程连接"></a>MySQL的远程连接</h4><p>云服务器端部署好了MySQL。那么可以在本机中连接云服务器端的MySQL数据库。这里，我借助的是<code>Navicat for MySQL</code>。<br>创建连接：<br><img src="https://s2.ax1x.com/2020/01/22/1AYZrQ.png" alt="">  连接名：随便写。<br>主机：云服务器的公有IP。<br>端口：默认端口3306。<br>用户名:即在上一节中创建的新用户，并且是能够远程连接的用户。<br>编辑密码：MySQL这一用户的密码。<br>点击测试连接。<br><img src="https://s2.ax1x.com/2020/01/22/1ATjbD.png" alt="">  成功！<br>以后便可以在本机连接到服务器端的MySQL进行使用。</p>
+<h4 id="MySQL的远程连接"><a href="#MySQL的远程连接" class="headerlink" title="MySQL的远程连接"></a>MySQL的远程连接</h4><p>云服务器端部署好了MySQL。那么可以在本机中连接云服务器端的MySQL数据库。这里，我借助的是<code>Navicat for MySQL</code>。<br>创建连接：<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AYZrQ.png" alt="">  连接名：随便写。<br>主机：云服务器的公有IP。<br>端口：默认端口3306。<br>用户名:即在上一节中创建的新用户，并且是能够远程连接的用户。<br>编辑密码：MySQL这一用户的密码。<br>点击测试连接。<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1ATjbD.png" alt="">  成功！<br>以后便可以在本机连接到服务器端的MySQL进行使用。</p>
 <h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>当在虚拟机(Ubuntu16.04)中的MySQL采取同样的操作时，可能连接失败。在百度了一番博文以后，所采用的办法是在虚拟机的终端：  </p>
 <ul>
 <li>cd /etc/mysql 进入到my.cnf文件所在的目录下，sudo cp my.cnf my.cnf.bak，备份文件  </li>
@@ -486,6 +486,28 @@
 
   
 
+  
+    
+    
+  
+
+  <section class="widget related_posts  desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span class='name'>相关文章</span>
+    
+  </header>
+
+
+    <div class="content">
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2020/01/17/Linux-Ubuntu的安装与相关设置/" title="Linux-Ubuntu的安装与相关设置" rel="bookmark">Linux-Ubuntu的安装与相关设置</a></h3></div></li></ul>
+    </div>
+  </section>
+
+
+  
+
 
           
         </div>
@@ -495,8 +517,6 @@
 
   <section class='meta' id="footer-meta">
     <div class='new-meta-box'>
-      
-        
       
         
           <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-14T22:12:12+08:00">
@@ -521,7 +541,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
           
         </a>
       
@@ -534,7 +554,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
           
         </a>
       
@@ -547,7 +567,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
           
         </a>
       
@@ -555,7 +575,7 @@
       
         
         <div class='hoverbox'>
-          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
           <div class='target'>
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZgAAAGYCAAAAABaUKuJAAAF9UlEQVR42u3aUa7DNhADwNz/0u0JAoncVfoKjP4SJLa8ox+C/vxj/cn1MQIwFhgwFhgwFhjrCPMpV33jw/9f3ffb9U/7Ot3/23XaeYIBAwYMGDBgwIABA+YeZjrY4w0vP5/+n34/HXB6YKbzBAMGDBgwYMCAAQMGTA4zHXD7ffwAl8HzFjQNtO2BOP4eDBgwYMCAAQMGDBgwP4NJH2irGGsDYwvY3hcMGDBgwIABAwYMGDD/P5gpyCdcKWR7AMCAAQMGDBgwYMCAAfPfw2zf+DbItUFvWtDdDu4VPBgwYMCAAQMGDBgwYHqYNsD5nAXn4zzBgAEDBgwIMGDAgAFzhJmu00anAS8NcO3BagPt9gIDBgwYMGDAgAEDBswZpg1IWwNJQadBuIXdDphgwIABAwYMGDBgwIB5B5MGy/SB2iCX/q8NstPrx88FBgwYMGDAgAEDBgyYGmbrgdqCbHq/VwVYC3V9wMGAAQMGDBgwYMCAAVPDbD3A7WDaIu22aLvdz+3+poH26/dgwIABAwYMGDBgwIC5hmkLrttAtVVMTaFv97cNdr1PMGDAgAEDBgwYMGDAPOtjpgVbC3U7sHaf04PWHjAwYMCAAQMGDBgwYMDkMNOiaQrUQmwXaO311g4EGDBgwIABAwYMGDBgjjBtwbNVNG0VYOn/2sG3wfL6ucGAAQMGDBgwYMCAAXMNkw5wWoSlB2Kr0EuDa3uQ0uINDBgwYMCAAQMGDBgw9zDtYF8VWunv2oKvHfBWID8GTDBgwIABAwYMGDBgwFwXZdMHjTdSBrutIi09mClwXOiBAQMGDBgwYMCAAQPmCLMV/FKIeMPlwNuCbCuAxwEVDBgwYMCAAQMGDBgwR5jbANUOpB3YVqB8HXy3CkYwYMCAAQMGDBgwYMDkMG1hlAaytnDbCnTbv5sWfseACQYMGDBgwIABAwYMmK9F2av16oGmg9gOlO0cvgZMMGDAgAEDBgwYMGDAXMO0QSwdfBsox0XUcgHWBtWv34MBAwYMGDBgwIABA+YIkw4yffC0cLsdZHv/afBtD8L184ABAwYMGDBgwIABA+Y6YG4HyFuINFhuBbppMN4O4GDAgAEDBgwYMGDAgNmHSQumrWDY7icuqC4DcbuP6wMEBgwYMGDAgAEDBgyY66IsvsCwUJsCtQVcCtDuPw2aYMCAAQMGDBgwYMCAuYdpC6utourVA/+qKEtBj5/BgAEDBgwYMGDAgAFzhNkKZtONT6HSIq4tstrr3S4wYMCAAQMGDBgwYMDkMG2BtVWU/apAmwbn7QALBgwYMGDAgAEDBgyYe5j2BtMXAKeAr4q8afBOA/bXgAkGDBgwYMCAAQMGDJif9TFbBdbroiwt8F4XbmDAgAEDBgwYMGDAgLmHuX2A2wA2LcBuB/Jq4FOgOFCCAQMGDBgwYMCAAQOmhnkV0Nrf/ZUXBrdefLz+HgwYMGDAgAEDBgwYMNcw08FMC6WtgaQvHraF1/SFPzBgwIABAwYMGDBgwOzDvA6OKWQb7Nr9t8Xe9CCAAQMGDBgwYMCAAQPmDJNuKB1EGtSmoNPiagrUBmcwYMCAAQMGDBgwYMDkMOmFt2DSoNcGyTT41QFxCgUGDBgwYMCAAQMGDJgYJh3c9MW8tlibFnBtsN4qDsGAAQMGDBgwYMCAAdPDbBU+Pwtg5YuB6y/mvdoHGDBgwIABAwYMGDBgrgNmu9oNpYGuDYjTgJsWctOCEQwYMGDAgAEDBgwYMGeYT7nSIqgNammRtVVcbRVr8UEFAwYMGDBgwIABAwbMNUwaKNNAuHWfrUG9fv42MIMBAwYMGDBgwIABAyaHmb4Ytx38toPwVsHV7gsMGDBgwIABAwYMGDB/H2YaMKdBs91/XXRNiz8wYMCAAQMGDBgwYMD8DGYa5KbXbwuyFn67GAQDBgwYMGDAgAEDBkwPMy2yXhVJ0wORFnXp82zNEwwYMGDAgAEDBgwYMPcw6y+uDQutaYB8dWDSAB0HXDBgwIABAwYMGDBgwBxhrL+1wICxwICxwICxwFhf178V2nppO6HNRgAAAABJRU5ErkJggg==">
           </div>
@@ -642,7 +662,7 @@
     
     
 
-<section class="widget blogger shadow floatable desktop moblie">
+<section class="widget blogger shadow floatable desktop">
   <div class='content'>
     
       <div class='avatar'>
@@ -694,7 +714,7 @@
     
   
 
-  <section class="widget category shadow floatable desktop mobile">
+  <section class="widget category shadow floatable desktop">
     
   <header>
     
@@ -733,7 +753,7 @@
     
   
 
-  <section class="widget tagcloud shadow floatable desktop mobile">
+  <section class="widget tagcloud shadow floatable desktop">
     
   <header>
     
@@ -1034,5 +1054,5 @@
 
 
   <script>setLoadingBarProgress(100);</script>
-</body>
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
 </html>

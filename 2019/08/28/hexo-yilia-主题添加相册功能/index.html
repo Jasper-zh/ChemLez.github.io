@@ -304,7 +304,7 @@
             
 <div class='new-meta-item author'>
   <a href="https://liizhi.cn" target="_blank" rel="nofollow noopener">
-    <img src="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
+    <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
     <p>Chemlez</p>
   </a>
 </div>
@@ -358,7 +358,7 @@
 
 
 
-<h2 id="二、创建图片存储仓库"><a href="#二、创建图片存储仓库" class="headerlink" title="二、创建图片存储仓库"></a>二、创建图片存储仓库</h2><p>因为，我们的博客是部署到远端，使得每一个人都能够看到，而图片在远端的展示，可借助于图床。所以，我们可以专门在github上创建一个仓库用于存储图片。仓库的创建就不再一一赘述，只需登录自己的github，new repository即可。这里，我的仓库名为blog-Picture.<br><img src="https://s2.ax1x.com/2019/08/28/mHQKyV.png" alt="个人仓库"><br>在创建完远端仓库后，将本地与github上远端仓库关联，这样我们以后才能够将图片推送到远端。<br>远端仓库与本地仓库关联的方法:<br>打开博客文件夹，在此根目录下，使用git ,即 git Bush Here,然后输入</p>
+<h2 id="二、创建图片存储仓库"><a href="#二、创建图片存储仓库" class="headerlink" title="二、创建图片存储仓库"></a>二、创建图片存储仓库</h2><p>因为，我们的博客是部署到远端，使得每一个人都能够看到，而图片在远端的展示，可借助于图床。所以，我们可以专门在github上创建一个仓库用于存储图片。仓库的创建就不再一一赘述，只需登录自己的github，new repository即可。这里，我的仓库名为blog-Picture.<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2019/08/28/mHQKyV.png" alt="个人仓库"><br>在创建完远端仓库后，将本地与github上远端仓库关联，这样我们以后才能够将图片推送到远端。<br>远端仓库与本地仓库关联的方法:<br>打开博客文件夹，在此根目录下，使用git ,即 git Bush Here,然后输入</p>
 <blockquote>
 <p>$ git clone <a href="mailto:git@github.com">git@github.com</a>:chemlez/picture-blog.git</p>
 </blockquote>
@@ -371,7 +371,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">   &lt;div class&#x3D;&quot;instagram itemscope&quot;&gt;</span><br><span class="line">	&lt;a href&#x3D;&quot;https:&#x2F;&#x2F;chemlez.github.io&#x2F;&quot; target&#x3D;&quot;_blank&quot; class&#x3D;&quot;open-ins&quot;&gt;图片正在加载中…&lt;&#x2F;a&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
 <p>3.修改ins.js文件里的render()函数，按照上面的注释提醒，进行修改。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 修改这里render()函数：修改图片的路径地址.minSrc 小图的路径. src 大图的路径.修改为自己的图片路径(github的路径)</span><br><span class="line">	&#x2F;&#x2F; https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;ChemLez&#x2F;blog-Picture&#x2F;master&#x2F;photos&#x2F;</span><br><span class="line">	&#x2F;&#x2F; https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;ChemLez&#x2F;blog-Picture&#x2F;master&#x2F;min_photos&#x2F;</span><br><span class="line">    var render &#x3D; function render(res) &#123;</span><br><span class="line">      var ulTmpl &#x3D; &quot;&quot;;</span><br><span class="line">      for (var j &#x3D; 0, len2 &#x3D; res.list.length; j &lt; len2; j++) &#123;</span><br><span class="line">        var data &#x3D; res.list[j].arr;</span><br><span class="line">        var liTmpl &#x3D; &quot;&quot;;</span><br><span class="line">        for (var i &#x3D; 0, len &#x3D; data.link.length; i &lt; len; i++) &#123;</span><br><span class="line">          var minSrc &#x3D; &#39;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;ChemLez&#x2F;blog-Picture&#x2F;master&#x2F;min_photos&#x2F;&#39; + data.link[i];</span><br><span class="line">          var src &#x3D; &#39;https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;ChemLez&#x2F;blog-Picture&#x2F;master&#x2F;photos&#x2F;&#39; + data.link[i];</span><br><span class="line">          var type &#x3D; data.type[i];</span><br><span class="line">          var target &#x3D; src + (type &#x3D;&#x3D;&#x3D; &#39;video&#39; ? &#39;.mp4&#39; : &#39;.jpg&#39;);</span><br><span class="line">          src +&#x3D; &#39;&#39;;</span><br></pre></td></tr></table></figure>
-<p>这里的地址，就可以查看我们第二步所做的工作。打开github，进入blog-Picture仓库后。点击在第二步中上传的照片。<img src="https://s2.ax1x.com/2019/08/29/mqaudA.png" alt="图片">然后点击Download，此时的浏览框中的地址就是我们所需要的地址。</p>
+<p>这里的地址，就可以查看我们第二步所做的工作。打开github，进入blog-Picture仓库后。点击在第二步中上传的照片。<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2019/08/29/mqaudA.png" alt="图片">然后点击Download，此时的浏览框中的地址就是我们所需要的地址。</p>
 <h2 id="四、添加脚本"><a href="#四、添加脚本" class="headerlink" title="四、添加脚本"></a>四、添加脚本</h2><p>这里添加的python脚本主要是用于处理图片。脚本下载-<a href="https://github.com/ChemLez/blog-Picture" target="_blank" rel="noopener">下载地址</a>.<br>因为，当我们点击相册这一页面时，展示在眼前的是一张张缩略图。而当你需要预览具体的某一张图时，其显示的是一张大图。所以，我们的预览图照片大小是经过压缩处理的（使得页面加载快）。当我们具体看某张图片时，再使用原画质的图片。所以，min_photos和photos两个文件夹分别对应着这两种图片。其中，min_photos就是处理过后的压缩图片，而photos就是我们存放的图片。所以，这里的python脚本主要就做着这样的工作。</p>
 <ol>
 <li>将其中的.py文件拷贝至本地仓库blog-Picture文件夹中.</li>
@@ -382,7 +382,7 @@
 </ol>
 <h2 id="五、运行"><a href="#五、运行" class="headerlink" title="五、运行"></a>五、运行</h2><p>1.首先将用于测试的图片名改成上述的命名规则的名字,推送至github远端，进行修改.<br>2.打开终端命令窗口cmd.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">cd blog-Picture &#x2F;&#x2F;用于进入blog-Picture文件夹</span><br><span class="line">python tool.py &#x2F;&#x2F;python脚本文件的运行</span><br><span class="line">第二句的运行这里可能会报错 &#96;no module named PIL&#96;</span><br><span class="line">然后输入：</span><br><span class="line">pip install pillow</span><br><span class="line">可能出现权限不足的情况，按照下方出现的英文，加上权限进行下载。即：一路按照下方的英文,加权限进行下载.</span><br></pre></td></tr></table></figure>
-<p>3.hexo s.预览查看。这里我将video功能隐去了，最初的photos旁边还有一个video功能。<br><img src="https://s2.ax1x.com/2019/08/29/mq6fkF.png" alt=""><br>4.在最初的photos下载中，有个videos.ejs文件，如果想引入一些视频，可将其中的链接即src，视频名进行修改.</p>
+<p>3.hexo s.预览查看。这里我将video功能隐去了，最初的photos旁边还有一个video功能。<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2019/08/29/mq6fkF.png" alt=""><br>4.在最初的photos下载中，有个videos.ejs文件，如果想引入一些视频，可将其中的链接即src，视频名进行修改.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;center&gt;</span><br><span class="line">    &lt;h1&gt;指弹_女儿情&lt;&#x2F;h1&gt;</span><br><span class="line">&lt;&#x2F;center&gt;</span><br><span class="line">&lt;hr&#x2F;&gt;</span><br><span class="line">&lt;center&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;video-container&quot;&gt;</span><br><span class="line">        &lt;iframe height&#x3D;&quot;80%&quot; width&#x3D;&quot;80%&quot; src&#x3D;&quot;https:&#x2F;&#x2F;player.youku.com&#x2F;embed&#x2F;XMjUzMzY4OTM3Ng&#x3D;&#x3D;&quot; frameborder&#x3D;0 allowfullscreen&gt;&lt;&#x2F;iframe&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">&lt;&#x2F;center&gt;</span><br><span class="line">&lt;hr&#x2F;&gt;</span><br></pre></td></tr></table></figure>
 <p>如果不想用这一功能，将以下标签注释.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a class&#x3D;&quot;photos-btn&quot; href&#x3D;&quot;&#x2F;photos&#x2F;videos.html&quot;&gt;Video&lt;&#x2F;a&gt;</span><br></pre></td></tr></table></figure>
@@ -423,6 +423,28 @@
 
   
 
+  
+    
+    
+  
+
+  <section class="widget related_posts  desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span class='name'>相关文章</span>
+    
+  </header>
+
+
+    <div class="content">
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2020/01/22/云端MySQL安装及相关配置/" title="云端MySQL安装及相关配置" rel="bookmark">云端MySQL安装及相关配置</a></h3></div></li></ul>
+    </div>
+  </section>
+
+
+  
+
 
           
         </div>
@@ -432,8 +454,6 @@
 
   <section class='meta' id="footer-meta">
     <div class='new-meta-box'>
-      
-        
       
         
           <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-14T05:26:22+08:00">
@@ -460,7 +480,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
           
         </a>
       
@@ -475,7 +495,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
           
         </a>
       
@@ -490,7 +510,7 @@
           
           >
           
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
           
         </a>
       
@@ -498,7 +518,7 @@
       
         
         <div class='hoverbox'>
-          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
           <div class='target'>
             <img src="data:image/png;base64,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">
           </div>
@@ -579,7 +599,7 @@
     
     
 
-<section class="widget blogger shadow floatable desktop moblie">
+<section class="widget blogger shadow floatable desktop">
   <div class='content'>
     
       <div class='avatar'>
@@ -631,7 +651,7 @@
     
   
 
-  <section class="widget category shadow floatable desktop mobile">
+  <section class="widget category shadow floatable desktop">
     
   <header>
     
@@ -670,7 +690,7 @@
     
   
 
-  <section class="widget tagcloud shadow floatable desktop mobile">
+  <section class="widget tagcloud shadow floatable desktop">
     
   <header>
     
@@ -971,5 +991,5 @@
 
 
   <script>setLoadingBarProgress(100);</script>
-</body>
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
 </html>

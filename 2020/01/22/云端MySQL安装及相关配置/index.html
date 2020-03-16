@@ -1,443 +1,115 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://volantis.js.org/#'>
+<head>
   <meta charset="utf-8">
-  <!-- SEO相关 -->
   
-    
+
   
-  <!-- 渲染优化 -->
-  <meta name="renderer" content="webkit">
-  <meta name="force-rendering" content="webkit">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-  <meta name="HandheldFriendly" content="True" >
-  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>云端MySQL安装及相关配置 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="由于自己的阿里云账号申请不足6个月，能够享受新用户云服务器ECS89元一年的优惠政策，所以就购买了一台云服务器，作为日常学习的使用。本文用来记录此次装载云服务器所遇到的一些问题及MySQL的安装过程。 一、云服务器的选配及配置此次我选购的服务器网址:http:&#x2F;&#x2F;aliyun.langsan.com&#x2F;?bd_vid&#x3D;8575091722087683835。下图为此次所购的云服务器配置:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云端MySQL安装及相关配置">
+<meta property="og:url" content="http://yoursite.com/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="由于自己的阿里云账号申请不足6个月，能够享受新用户云服务器ECS89元一年的优惠政策，所以就购买了一台云服务器，作为日常学习的使用。本文用来记录此次装载云服务器所遇到的一些问题及MySQL的安装过程。 一、云服务器的选配及配置此次我选购的服务器网址:http:&#x2F;&#x2F;aliyun.langsan.com&#x2F;?bd_vid&#x3D;8575091722087683835。下图为此次所购的云服务器配置:">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/22/1AMtQs.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/22/1AlfPO.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/22/1A3K1g.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/22/1AYUaR.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/22/1AUC5R.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/22/1AYZrQ.png">
+<meta property="og:image" content="https://s2.ax1x.com/2020/01/22/1ATjbD.png">
+<meta property="article:published_time" content="2020-01-22T13:27:59.000Z">
+<meta property="article:modified_time" content="2020-03-14T14:12:12.893Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.ax1x.com/2020/01/22/1AMtQs.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
 
-  <!-- 页面元数据 -->
-  
-    <title>云端MySQL安装及相关配置 - Liz&#39;blog</title>
-  
-    <meta name="keywords" content="Linux,MySQL">
-  
-  
-    <meta name="description" content="由于自己的阿里云账号申请不足6个月，能够享受新用户云服务器ECS89元一年的优惠政策，所以就购买了一台云服务器，作为日常学习的使用。本文用来记录此次装载云服务器所遇到的一些问题及MySQL的安装过程。
-一、云服务器的选配及配置此次我选购的服务器网址:http://aliyun.langsan.com/?bd_vi...">
-  
-
-  <!-- feed -->
-  
-
-  <!-- import meta -->
-  
-
-  <!-- link -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
-
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
-
-  
-
-  
-  <link rel="shortcut icon" type='image/x-icon' href="https://s1.ax1x.com/2020/03/15/81ZR5F.jpg">
-  
-
-  
-
-  <!-- import link -->
-  
-
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.4.3/css/style.css">
-
-  
-
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
-
-  
-  
-</head>
+<meta name="generator" content="Hexo 4.2.0"></head>
 
 <body>
-  
-  <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
-</div>
-<header class="l_header shadow blur">
-
-  <div class='wrapper'>
-    <div class='nav-sub container--flex'>
-      <a class="logo flat-box"></a>
-      <ul class='switcher h-list'>
-        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
-        
-          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
-        
-      </ul>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
     </div>
-		<div class="nav-main container container--flex">
-      
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
         
-        <a class="logo flat-box" target="_self" href='/'>
-          
-          
-          
-          
-            CHEMLEZ <b><sup style='color:#3AA757'></sup></b>
-          
-        </a>
-      
-
-			<div class='menu navigation'>
-				<ul class='h-list'>
-          
-          
-          
-            
-            
-              <li>
-                <a class="flat-box" href=/
-                  
-                  
-                  
-                    id="home"
-                  >
-                  
-                    <i class='fas fa-home fa-fw'></i>
-                  
-                  主页
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="flat-box" 
-                  
-                  
-                  >
-                  
-                    <i class='fas fa-list-alt fa-fw fa-fw'></i>
-                  
-                  索引
-                </a>
-                
-                  <ul class="submenu">
-                    
-                      
-            
-              <li>
-                <a class="flat-box" href=/tags/
-                  
-                  
-                  
-                    id="tags"
-                  >
-                  
-                    <i class='fas fa-tags fa-fw'></i>
-                  
-                  标签
-                </a>
-                
-              </li>
-            
-          
-                    
-                      
-            
-              <li>
-                <a class="flat-box" href=/categories/
-                  
-                  
-                  
-                    id="categories"
-                  >
-                  
-                    <i class='fas fa-folder-open fa-fw'></i>
-                  
-                  类别
-                </a>
-                
-              </li>
-            
-          
-                    
-                      
-            
-              <li>
-                <a class="flat-box" href=/archives/
-                  
-                  
-                  
-                    id="archives"
-                  >
-                  
-                    <i class='fas fa-archive fa-fw'></i>
-                  
-                  归档
-                </a>
-                
-              </li>
-            
-          
-                    
-                  </ul>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="flat-box" href=/friends/
-                  
-                  
-                  
-                    id="friends"
-                  >
-                  
-                    <i class='fas fa-link fa-fw'></i>
-                  
-                  友链
-                </a>
-                
-              </li>
-            
-          
-          
-            
-            
-              <li>
-                <a class="flat-box" href=/about/
-                  
-                  
-                  
-                    id="about"
-                  >
-                  
-                    <i class='fas fa-info-circle fa-fw'></i>
-                  
-                  关于
-                </a>
-                
-              </li>
-            
-          
-          
-				</ul>
-			</div>
-
-      
-        <div class="m_search">
-          <form name="searchform" class="form u-search-form">
-            <i class="icon fas fa-search fa-fw"></i>
-            <input type="text" class="input u-search-input" placeholder="搜索" />
-          </form>
-        </div>
-      
-
-			<ul class='switcher h-list'>
-				
-					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
-				
-				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
-			</ul>
-		</div>
-	</div>
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
 </header>
-<ul class="menu-phone navigation white-box">
-  
-  
-    <li>
-      <a class="flat-box" href=/
-        
-        
-        
-          id="home"
-        >
-        
-          <i class='fas fa-clock fa-fw fa-fw'></i>
-        
-        近期文章
-      </a>
-    </li>
-  
-    <li>
-      <a class="flat-box" href=/archives/
-        
-        
-        
-          id="archives"
-        >
-        
-          <i class='fas fa-list-alt fa-fw fa-fw'></i>
-        
-        文章归档
-      </a>
-    </li>
-  
-    <li>
-      <a class="flat-box" href=/categories/
-        
-        
-        
-          id="categories"
-        >
-        
-          <i class='fas fa-folder-open fa-fw'></i>
-        
-        文章类别
-      </a>
-    </li>
-  
-    <li>
-      <a class="flat-box" href=/friends/
-        
-        
-        
-          id="friends"
-        >
-        
-          <i class='fas fa-link fa-fw'></i>
-        
-        我的友链
-      </a>
-    </li>
-  
-    <li>
-      <a class="flat-box" href=/about/
-        
-        
-        
-          id="about"
-        >
-        
-          <i class='fas fa-info-circle fa-fw'></i>
-        
-        关于小站
-      </a>
-    </li>
-  
-    <li>
-      <a class="flat-box" 
-        
-        
-        >
-        
-        
-      </a>
-    </li>
-  
-</ul>
-<script>setLoadingBarProgress(40);</script>
+      <div class="outer">
+        <section id="main"><article id="post-云端MySQL安装及相关配置" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/" class="article-date">
+  <time datetime="2020-01-22T13:27:59.000Z" itemprop="datePublished">2020-01-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
 
-
-
-  <div class="l_body nocover">
-    <div class='body-wrapper'>
-      
-
-<div class='l_main'>
-  
-
-  
-    <article id="post" class="post white-box shadow floatable article-type-post" itemscope itemprop="blogPost">
-      
-
-
-  <section class='meta'>
+  </div>
+  <div class="article-inner">
     
     
-    <div class="meta" id="header-meta">
-      
+      <header class="article-header">
         
   
-    <h1 class="title">
-      <a href="/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/">
-        云端MySQL安装及相关配置
-      </a>
+    <h1 class="article-title" itemprop="name">
+      云端MySQL安装及相关配置
     </h1>
   
 
-
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
       
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="https://liizhi.cn" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
-    <p>Chemlez</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Linux/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Linux</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：Jan 22, 2020</p>
-  </a>
-</div>
-
-          
-        
-          
-            
-
-          
-        
-      </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-      <section class="article typo">
-        <div class="article-entry" itemprop="articleBody">
-          
-          <p>由于自己的阿里云账号申请不足6个月，能够享受新用户云服务器ECS89元一年的优惠政策，所以就购买了一台云服务器，作为日常学习的使用。本文用来记录此次装载云服务器所遇到的一些问题及MySQL的安装过程。</p>
-<h4 id="一、云服务器的选配及配置"><a href="#一、云服务器的选配及配置" class="headerlink" title="一、云服务器的选配及配置"></a>一、云服务器的选配及配置</h4><p>此次我选购的服务器网址:<a href="http://aliyun.langsan.com/?bd_vid=8575091722087683835" target="_blank" rel="noopener">http://aliyun.langsan.com/?bd_vid=8575091722087683835</a>。下图为此次所购的云服务器配置:  <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AMtQs.png" alt="服务器配置"> </p>
+        <p>由于自己的阿里云账号申请不足6个月，能够享受新用户云服务器ECS89元一年的优惠政策，所以就购买了一台云服务器，作为日常学习的使用。本文用来记录此次装载云服务器所遇到的一些问题及MySQL的安装过程。</p>
+<h4 id="一、云服务器的选配及配置"><a href="#一、云服务器的选配及配置" class="headerlink" title="一、云服务器的选配及配置"></a>一、云服务器的选配及配置</h4><p>此次我选购的服务器网址:<a href="http://aliyun.langsan.com/?bd_vid=8575091722087683835" target="_blank" rel="noopener">http://aliyun.langsan.com/?bd_vid=8575091722087683835</a>。下图为此次所购的云服务器配置:  <img src="https://s2.ax1x.com/2020/01/22/1AMtQs.png" alt="服务器配置"> </p>
 <a id="more"></a>
 
 
 
 <p>后续步骤为：提货券的兑换；地域站点的选取以及系统的选配。这里我选取的为上海的站点（大陆境内站点随便选没什么差别），系统选装的为Centos7(具体到7.x没什么区别)。然后就是阿里云那边的自动配置了。购买及配置较为简单，全部为阿里云的傻瓜一站式操作。</p>
-<h4 id="二、安全组的设置"><a href="#二、安全组的设置" class="headerlink" title="二、安全组的设置"></a>二、安全组的设置</h4><p>第一次服务器的使用，需要进行安全组的设置。进入到自己的控制台-实例与镜像-实例。这个时候就能够看到自己的服务器。勾选此台服务器：<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AlfPO.png" alt="">  </p>
+<h4 id="二、安全组的设置"><a href="#二、安全组的设置" class="headerlink" title="二、安全组的设置"></a>二、安全组的设置</h4><p>第一次服务器的使用，需要进行安全组的设置。进入到自己的控制台-实例与镜像-实例。这个时候就能够看到自己的服务器。勾选此台服务器：<br><img src="https://s2.ax1x.com/2020/01/22/1AlfPO.png" alt="">  </p>
 <ul>
 <li><p>依次设置实例ID、重置实例密码；  </p>
 </li>
@@ -446,7 +118,7 @@
 </li>
 <li><p>网络与安全组。将此实例加入到安全组里。  </p>
 </li>
-<li><p>设置安全组规则  <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1A3K1g.png" alt="">  在安全组规则中，采用快速创建规则。规则方向：入方向/出方向，均可采用，用于控制服务器访入与访出。授权策略：允许/禁止（不解释）。常用端口（TCP）:控制端口的访入与访出（根据自己的习惯与用处）。授权对象:默认为0.0.0.0/0。至此服务器基本配置到此结束。<br>回到控制台实例中，点击远程连接。区域即为所选区域（一般默认不变）；端口默认为22；用户名默认为root；密码是之前设置的实例密码。</p>
+<li><p>设置安全组规则  <img src="https://s2.ax1x.com/2020/01/22/1A3K1g.png" alt="">  在安全组规则中，采用快速创建规则。规则方向：入方向/出方向，均可采用，用于控制服务器访入与访出。授权策略：允许/禁止（不解释）。常用端口（TCP）:控制端口的访入与访出（根据自己的习惯与用处）。授权对象:默认为0.0.0.0/0。至此服务器基本配置到此结束。<br>回到控制台实例中，点击远程连接。区域即为所选区域（一般默认不变）；端口默认为22；用户名默认为root；密码是之前设置的实例密码。</p>
 </li>
 </ul>
 <h4 id="三、本机ssh连接服务器免密设置"><a href="#三、本机ssh连接服务器免密设置" class="headerlink" title="三、本机ssh连接服务器免密设置"></a>三、本机ssh连接服务器免密设置</h4><p>上一部分中，我们在阿里云的网页实例中，远程连接到我们的服务器。但是，每当我们需要用到服务器时，便要通过阿里云账号登录再来连接就显得比较麻烦。这里，通过ssh的命令在自己电脑终端来远程连接自己的服务器。<br>终端命令：<code>ssh root@ip</code>  </p>
@@ -454,12 +126,12 @@
 <li>root:远程连接的用户名；一般默认不变即为root。  </li>
 <li>ip:自己服务器公网ip。<br>回车后，输入自己的root用户实例密码即可连接。<br><strong>注：Linux、Mac系统终端自带ssh命令；Windows系统不自带ssh命令，需要借助putty或Xshell客户端软件使用。</strong><br>但是，每次我们在自己的电脑连接到服务器都需要通过ip地址，再由密码登录也比较麻烦。所以这里再介绍本机免密码登录服务器的方式。<br>思路：将自己的公有密匙添加到服务器端。  </li>
 </ul>
-<h5 id="1-在本地生成一对公匙-密匙"><a href="#1-在本地生成一对公匙-密匙" class="headerlink" title="1.在本地生成一对公匙-密匙"></a>1.在本地生成一对公匙-密匙</h5><p><code>ssh-keygen -t rsa</code><br>采用默认目录，不设置密码，一路回车即可。<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AYUaR.png" alt="">  最终会在~/.ssh目录下生成id_rsa(密匙)；id_rsa.pub(公匙)。  </p>
+<h5 id="1-在本地生成一对公匙-密匙"><a href="#1-在本地生成一对公匙-密匙" class="headerlink" title="1.在本地生成一对公匙-密匙"></a>1.在本地生成一对公匙-密匙</h5><p><code>ssh-keygen -t rsa</code><br>采用默认目录，不设置密码，一路回车即可。<br><img src="https://s2.ax1x.com/2020/01/22/1AYUaR.png" alt="">  最终会在~/.ssh目录下生成id_rsa(密匙)；id_rsa.pub(公匙)。  </p>
 <h5 id="2-将公匙部署至服务器上"><a href="#2-将公匙部署至服务器上" class="headerlink" title="2.将公匙部署至服务器上"></a>2.将公匙部署至服务器上</h5><p>在本地命令执行：<br>方式一:<code>scp ~/.ssh/id_rsa.pub root@公网IP地址:～/.ssh/authorized_keys</code><br>方式二：<code>ssh-copy-id ~/.ssh/id_rsa.pub root@公网IP地址</code><br>以上两种方式即将本地公匙内容复制到远程服务器<code>～/.ssh/authorized_keys</code>的文件中。</p>
 <p>至此，再次登录服务器只需一句ssh终端命令即可，不需要再输入密码。<br>到这里还不是最简洁的一种登录方式，因为我们还需要输入root用户账号，ip地址。所以后续还有更简洁的方式：<br>本地需要保存ssh登录主机的相关信息，在本地主机用户根目录下的.ssh文件内创建config文件，用于保存ssh登陆主机的相关信息<br><code>vim config</code>（如果没有vim可以手动到此目下创建config文件）<br>编辑内容：  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Host name #AAAAA为服务器主机名</span><br><span class="line">HostName 39.97.170.231 #写服务器ip地址</span><br><span class="line">User root #root为登陆用户名</span><br><span class="line">Port 22 #主机端口，默认是22</span><br><span class="line">IdentityFile &#x2F;Users&#x2F;.ssh&#x2F;id_rsa #自己生成的私钥的文件路径</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意：Host name是之前服务器设置中设置的实例id/名称</strong><br>实例如下：<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AUC5R.png" alt="">  </p>
+<p><strong>注意：Host name是之前服务器设置中设置的实例id/名称</strong><br>实例如下：<br><img src="https://s2.ax1x.com/2020/01/22/1AUC5R.png" alt="">  </p>
 <h5 id="3-在服务器设置自动检验的信息"><a href="#3-在服务器设置自动检验的信息" class="headerlink" title="3.在服务器设置自动检验的信息"></a>3.在服务器设置自动检验的信息</h5><p>打开/etc/ssh/sshd_config文件<br><code>vim /etc/ssh/sshd_config</code>找到  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PubkeyAuthentication yes </span><br><span class="line">AuthorizedKeysFile .ssh&#x2F;authorized_keys</span><br></pre></td></tr></table></figure>
 
@@ -498,7 +170,7 @@
 <li><p>修改mysql库里边的user表，限制root用户只能从哪个ip登录<br><code>update mysql.user set host=&#39;localhost&#39; where user=&#39;root&#39;;</code></p>
 </li>
 </ol>
-<h4 id="MySQL的远程连接"><a href="#MySQL的远程连接" class="headerlink" title="MySQL的远程连接"></a>MySQL的远程连接</h4><p>云服务器端部署好了MySQL。那么可以在本机中连接云服务器端的MySQL数据库。这里，我借助的是<code>Navicat for MySQL</code>。<br>创建连接：<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1AYZrQ.png" alt="">  连接名：随便写。<br>主机：云服务器的公有IP。<br>端口：默认端口3306。<br>用户名:即在上一节中创建的新用户，并且是能够远程连接的用户。<br>编辑密码：MySQL这一用户的密码。<br>点击测试连接。<br><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s2.ax1x.com/2020/01/22/1ATjbD.png" alt="">  成功！<br>以后便可以在本机连接到服务器端的MySQL进行使用。</p>
+<h4 id="MySQL的远程连接"><a href="#MySQL的远程连接" class="headerlink" title="MySQL的远程连接"></a>MySQL的远程连接</h4><p>云服务器端部署好了MySQL。那么可以在本机中连接云服务器端的MySQL数据库。这里，我借助的是<code>Navicat for MySQL</code>。<br>创建连接：<br><img src="https://s2.ax1x.com/2020/01/22/1AYZrQ.png" alt="">  连接名：随便写。<br>主机：云服务器的公有IP。<br>端口：默认端口3306。<br>用户名:即在上一节中创建的新用户，并且是能够远程连接的用户。<br>编辑密码：MySQL这一用户的密码。<br>点击测试连接。<br><img src="https://s2.ax1x.com/2020/01/22/1ATjbD.png" alt="">  成功！<br>以后便可以在本机连接到服务器端的MySQL进行使用。</p>
 <h5 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h5><p>当在虚拟机(Ubuntu16.04)中的MySQL采取同样的操作时，可能连接失败。在百度了一番博文以后，所采用的办法是在虚拟机的终端：  </p>
 <ul>
 <li>cd /etc/mysql 进入到my.cnf文件所在的目录下，sudo cp my.cnf my.cnf.bak，备份文件  </li>
@@ -530,617 +202,153 @@
 <p>[1] centos7下安装mysql（完整配置）:<a href="https://blog.csdn.net/baidu_32872293/article/details/80557668" target="_blank" rel="noopener">https://blog.csdn.net/baidu_32872293/article/details/80557668</a><br>[2] mysql 密码强度规则设置:<a href="https://blog.csdn.net/u014236541/article/details/78244601" target="_blank" rel="noopener">https://blog.csdn.net/u014236541/article/details/78244601</a><br>[3] MYSQL的创建用户，授权用户，删除用户，查看用户:<a href="https://blog.csdn.net/u014453898/article/details/55064312" target="_blank" rel="noopener">https://blog.csdn.net/u014453898/article/details/55064312</a><br>[4] mysql查看所有用户:<a href="https://blog.csdn.net/qq_37996815/article/details/78934536" target="_blank" rel="noopener">https://blog.csdn.net/qq_37996815/article/details/78934536</a><br>[5] Ubuntu 16.04 安装使用MySQL:<a href="https://blog.csdn.net/vXueYing/article/details/52330180" target="_blank" rel="noopener">https://blog.csdn.net/vXueYing/article/details/52330180</a><br>[6] 使用navicat 连接虚拟机上的MySQL数据库:<a href="https://www.jianshu.com/p/8fa82acb16e9" target="_blank" rel="noopener">https://www.jianshu.com/p/8fa82acb16e9</a><br>[7] SSH连接服务器 本地记住用户名及密码:<a href="https://blog.csdn.net/persist_xyz/article/details/90231433" target="_blank" rel="noopener">https://blog.csdn.net/persist_xyz/article/details/90231433</a></font></p>
 </blockquote>
 
-          
-            <br>
-            
-  
-    
-    
-
-<section class="widget copyright  desktop mobile">
-  <div class='content'>
-    
-      <blockquote>
-        
-          
-            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
-
-          
-        
-          
-            <p>本文永久链接是：<a href=https://www.liizhi.cn/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/>https://www.liizhi.cn/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</a></p>
-          
-        
-      </blockquote>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget related_posts  desktop mobile">
-    
-  <header>
-    
-      <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span class='name'>相关文章</span>
-    
-  </header>
-
-
-    <div class="content">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2020/01/17/Linux-Ubuntu的安装与相关设置/" title="Linux-Ubuntu的安装与相关设置" rel="bookmark">Linux-Ubuntu的安装与相关设置</a></h3></div></li></ul>
-    </div>
-  </section>
-
-
-  
-
-
-          
-        </div>
-        
-          
-
-
-  <section class='meta' id="footer-meta">
-    <div class='new-meta-box'>
-      
-        
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-14T22:12:12+08:00">
-  <a class='notlink'>
-    <i class="fas fa-save" aria-hidden="true"></i>
-    <p>更新于：Mar 14, 2020</p>
-  </a>
-</div>
-
-        
-      
-        
-          
-  
-  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Linux/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>Linux</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/MySQL/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>MySQL</p></a></div>
-
-
-        
-      
-        
-          
-  <div class="new-meta-item share -mob-share-list">
-  <div class="-mob-share-list share-body">
-    
-      
-        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
-          
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.liizhi.cn/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/&title=云端MySQL安装及相关配置 - Liz'blog&summary=由于自己的阿里云账号申请不足6个月，能够享受新用户云服务器ECS89元一年的优惠政策，所以就购买了一台云服务器，作为日常学习的使用。本文用来记录此次装载云服务器所遇到的一些问题及MySQL的安装过程。
-一、云服务器的选配及配置此次我选购的服务器网址:http://aliyun.langsan.com/?bd_vid=8575091722087683835。下图为此次所购的云服务器配置:   "
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
-          
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.liizhi.cn/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/&title=云端MySQL安装及相关配置 - Liz'blog&summary=由于自己的阿里云账号申请不足6个月，能够享受新用户云服务器ECS89元一年的优惠政策，所以就购买了一台云服务器，作为日常学习的使用。本文用来记录此次装载云服务器所遇到的一些问题及MySQL的安装过程。
-一、云服务器的选配及配置此次我选购的服务器网址:http://aliyun.langsan.com/?bd_vid=8575091722087683835。下图为此次所购的云服务器配置:   "
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
-          
-        </a>
-      
-    
-      
-        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
-          
-          href="http://service.weibo.com/share/share.php?url=https://www.liizhi.cn/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/&title=云端MySQL安装及相关配置 - Liz'blog&summary=由于自己的阿里云账号申请不足6个月，能够享受新用户云服务器ECS89元一年的优惠政策，所以就购买了一台云服务器，作为日常学习的使用。本文用来记录此次装载云服务器所遇到的一些问题及MySQL的安装过程。
-一、云服务器的选配及配置此次我选购的服务器网址:http://aliyun.langsan.com/?bd_vid=8575091722087683835。下图为此次所购的云服务器配置:   "
-          
-          >
-          
-            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
-          
-        </a>
-      
-    
-      
-        
-        <div class='hoverbox'>
-          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
-          <div class='target'>
-            <img src="data:image/png;base64,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">
-          </div>
-        </div>
-      
-    
-  </div>
-</div>
-
-
-
-        
       
     </div>
-  </section>
-
-
-        
-        
-          <div class="prev-next">
-            
-              <a class='prev' href='/2020/02/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91%E5%85%A5%E9%97%A8%E4%B9%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E6%A1%88%E4%BE%8B/'>
-                <p class='title'><i class="fas fa-chevron-left" aria-hidden="true"></i>机器学习:决策树入门之泰坦尼克号案例</p>
-                <p class='content'>本文用于记录机器学习中的一次入门练习，即：利用决策树进行简单的二分类。同时，结合Kaggle上的经典案例Titanic，来测试实际效果。
-一、数据集采用Kaggle中的Titanic的数据集。数...</p>
-              </a>
-            
-            
-              <a class='next' href='/2020/01/17/Linux-Ubuntu%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/'>
-                <p class='title'>Linux-Ubuntu的安装与相关设置<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
-                <p class='content'>近日换了电脑，想装一个Linux系统，但也不想在本机上装双系统，就选择了装起虚拟机。此次选择了安装Ubuntu 16.04.6版本，文章最后会附上常用16.04和18.04ubuntu镜像源下载...</p>
-              </a>
-            
-          </div>
-        
-      </section>
-    </article>
-  
-
-  
-    <!-- 显示推荐文章和评论 -->
-
-
-
-  <article class="post white-box comments shadow floatable">
-    <section class="article typo">
-      <p ct><i class='fas fa-comments'></i> Comment</p>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/" data-id="ck7uiygn30007rsaegaw1aiii" class="article-share-link">Share</a>
       
       
-      
-      
-      
-        <section id="comments">
-          <div id="valine_container" class="valine_thread">
-            <i class="fas fa-spinner fa-spin fa-fw"></i>
-          </div>
-        </section>
-      
-    </section>
-  </article>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li></ul>
 
-
-  
-
-
-
-
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-
-
-  <script>
-    window.subData = {
-      title: '云端MySQL安装及相关配置',
-      tools: true
-    }
-  </script>
-
-
-</div>
-<aside class='l_side'>
-  
-  
-    
-    
-
-<section class="widget blogger shadow floatable desktop">
-  <div class='content'>
-    
-      <div class='avatar'>
-        <img class='avatar' src='https://s1.ax1x.com/2020/03/13/8mvbCj.jpg'/>
-      </div>
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Liz'blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="https://github.com/Chemlez"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://weibo.com/u/5653780011?nick=Sane_z&is_all=1"
-              class="social fab fa-weibo flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="mailto:liizhi_1106@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91%E5%85%A5%E9%97%A8%E4%B9%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E6%A1%88%E4%BE%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          机器学习:决策树入门之泰坦尼克号案例
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/17/Linux-Ubuntu%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Linux-Ubuntu的安装与相关设置</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
 </section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Machine-Learning/">Machine Learning</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a></li></ul>
+    </div>
+  </div>
+
 
   
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DecisionTree/" rel="tag">DecisionTree</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kaggle/" rel="tag">Kaggle</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VMware/" rel="tag">VMware</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
+    </div>
+  </div>
+
 
   
     
-    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/DecisionTree/" style="font-size: 10px;">DecisionTree</a> <a href="/tags/Kaggle/" style="font-size: 10px;">Kaggle</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/MySQL/" style="font-size: 10px;">MySQL</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/VMware/" style="font-size: 10px;">VMware</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a>
+    </div>
+  </div>
+
   
-
-  <section class="widget category shadow floatable desktop">
     
-  <header>
-    
-      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li></ul>
+    </div>
+  </div>
 
 
-    <div class='content'>
-      <ul class="entry navigation">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
         
-          <li><a class="flat-box"
-            title="/categories/Linux/" href="/categories/Linux/"
-            id="categoriesLinux"
-            ><div class='name'>Linux</div><div class='badge'>(2)</div></a></li>
+          <li>
+            <a href="/2020/02/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E5%86%B3%E7%AD%96%E6%A0%91%E5%85%A5%E9%97%A8%E4%B9%8B%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E6%A1%88%E4%BE%8B/">机器学习:决策树入门之泰坦尼克号案例</a>
+          </li>
         
-          <li><a class="flat-box"
-            title="/categories/Machine-Learning/" href="/categories/Machine-Learning/"
-            id="categoriesMachine-Learning"
-            ><div class='name'>Machine Learning</div><div class='badge'>(1)</div></a></li>
+          <li>
+            <a href="/2020/01/22/%E4%BA%91%E7%AB%AFMySQL%E5%AE%89%E8%A3%85%E5%8F%8A%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/">云端MySQL安装及相关配置</a>
+          </li>
         
-          <li><a class="flat-box"
-            title="/categories/Python/" href="/categories/Python/"
-            id="categoriesPython"
-            ><div class='name'>Python</div><div class='badge'>(1)</div></a></li>
+          <li>
+            <a href="/2020/01/17/Linux-Ubuntu%E7%9A%84%E5%AE%89%E8%A3%85%E4%B8%8E%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/">Linux-Ubuntu的安装与相关设置</a>
+          </li>
+        
+          <li>
+            <a href="/2019/10/22/%E5%BA%8F%E5%88%97%E4%B9%8B%E6%B7%B1%E6%8B%B7%E8%B4%9D-%E6%B5%85%E6%8B%B7%E8%B4%9D/">序列之深拷贝/浅拷贝</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/28/hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/">Hexo yilia 主题添加相册功能</a>
+          </li>
         
       </ul>
     </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow floatable desktop">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/DecisionTree/" style="font-size: 14px; color: #999">DecisionTree</a> <a href="/tags/Kaggle/" style="font-size: 14px; color: #999">Kaggle</a> <a href="/tags/Linux/" style="font-size: 24px; color: #555">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px; color: #999">MySQL</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/VMware/" style="font-size: 14px; color: #999">VMware</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-
-
-  <section class="widget toc-wrapper shadow floatable desktop mobile">
-    
-  <header>
-    
-      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
-    
-  </header>
-
-
-    <div class='content'>
-      <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#一、云服务器的选配及配置"><span class="toc-number">1.</span> <span class="toc-text">一、云服务器的选配及配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二、安全组的设置"><span class="toc-number">2.</span> <span class="toc-text">二、安全组的设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三、本机ssh连接服务器免密设置"><span class="toc-number">3.</span> <span class="toc-text">三、本机ssh连接服务器免密设置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-在本地生成一对公匙-密匙"><span class="toc-number">3.1.</span> <span class="toc-text">1.在本地生成一对公匙-密匙</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-将公匙部署至服务器上"><span class="toc-number">3.2.</span> <span class="toc-text">2.将公匙部署至服务器上</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-在服务器设置自动检验的信息"><span class="toc-number">3.3.</span> <span class="toc-text">3.在服务器设置自动检验的信息</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#四、-MySQL服务器的安装及相关配置"><span class="toc-number">4.</span> <span class="toc-text">四、 MySQL服务器的安装及相关配置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#MySQ安装"><span class="toc-number">4.1.</span> <span class="toc-text">MySQ安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#参数解释"><span class="toc-number">4.2.</span> <span class="toc-text">参数解释</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#修改mysql参数配置"><span class="toc-number">4.3.</span> <span class="toc-text">修改mysql参数配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#MySQL密码的修改"><span class="toc-number">4.4.</span> <span class="toc-text">MySQL密码的修改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#MySQL用户的创建及权限设置"><span class="toc-number">4.5.</span> <span class="toc-text">MySQL用户的创建及权限设置</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL的远程连接"><span class="toc-number">5.</span> <span class="toc-text">MySQL的远程连接</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#注意"><span class="toc-number">5.1.</span> <span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#附"><span class="toc-number">6.</span> <span class="toc-text">附</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#参考文献"><span class="toc-number">7.</span> <span class="toc-text">参考文献</span></a></li></ol>
-    </div>
-  </section>
-
-
-  
-
-
-</aside>
-
-
-  
-  <footer class="clearfix">
-    <br><br>
-    
-      
-        <div class="aplayer-container">
-          
-
-
-        </div>
-      
-    
-      
-        <br>
-        <div class="social-wrapper">
-          
-            
-              <a href="https://github.com/Chemlez"
-                class="social fab fa-github flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="https://weibo.com/u/5653780011?nick=Sane_z&amp;is_all=1"
-                class="social fab fa-weibo flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="mailto:liizhi_1106@163.com"
-                class="social fas fa-envelope flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-        </div>
-      
-    
-      
-        <div class='copyright'>
-        <p><a href="https://liizhi.cn" target="_blank" rel="noopener">Copyright © 2019-2020 Chemlez</a></p>
-
-        </div>
-      
-    
-  </footer>
-
-<script>setLoadingBarProgress(80);</script>
-
-
-      <script>setLoadingBarProgress(60);</script>
-    </div>
-    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
   </div>
+
   
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
-
-
-  <script>
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
     
-    var SEARCH_SERVICE = "hexo" || "hexo";
-    var ROOT = "/" || "/";
-    if (!ROOT.endsWith('/')) ROOT += '/';
-  </script>
 
-
-  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
   
-<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
-
-  <script type="text/javascript">
-    $(function() {
-      Waves.attach('.flat-btn', ['waves-button']);
-      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
-      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
-      Waves.attach('.flat-box', ['waves-block']);
-      Waves.attach('.float-box', ['waves-block', 'waves-float']);
-      Waves.attach('.waves-image');
-      Waves.init();
-    });
-  </script>
-
-
-  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
-
-
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
 
   
-  
-  
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
-
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover') {
-          $('.cover').backstretch(
-            imgs,
-          {
-            duration: "20000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "20000",
-            fade: "1500"
-          });
-        }
-      });
-    </script>
-  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
 
 
 
 
+<script src="/js/script.js"></script>
 
 
 
 
-
-
-  
-    
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0/js/valine.js"></script>
-
-  
-  <script>
-  var GUEST_INFO = ['nick','mail','link'];
-  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
-    return GUEST_INFO.indexOf(item) > -1
-  });
-  var notify = 'true' == true;
-  var verify = 'true' == true;
-  var valine = new Valine();
-  valine.init({
-    el: '#valine_container',
-    notify: notify,
-    verify: verify,
-    guest_info: guest_info,
-    
-    appId: "YSitK1ig1lRcy3jvrtTzT6fb-MdYXbMMI",
-    appKey: "e7hFf2zqvyWgNmDsClWcM7W3",
-    placeholder: "快来评论吧~",
-    pageSize:'10',
-    avatar:'wavatar',
-    lang:'zh-cn',
-    visitor: 'false',
-    highlight:'true'
-  })
-  </script>
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.4/js/app.js"></script>
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
-
-
-
-  
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
-
-
-
-<!-- 复制 -->
-
-  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
-<script>
-  !function (e, t, a) {
-    var initCopyCode = function(){
-      var copyHtml = '';
-      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
-      copyHtml += '</button>';
-      $(".highlight .code pre").before(copyHtml);
-      var clipboard = new ClipboardJS('.btn-copy', {
-        target: function(trigger) {
-          return trigger.nextElementSibling;
-        }
-      });
-      clipboard.on('success', function(e) {
-        let $btn = $(e.trigger);
-        $btn.addClass('copyed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('fa-copy');
-        $icon.addClass('fa-clipboard-check');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPYED';
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('fa-copy');
-        $icon.addClass('fa-exclamation-triangle');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-      });
-    }
-    initCopyCode();
-  }(window, document);
-</script>
-
-
-
-
-<!-- fancybox -->
-
-  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-<script>
-  let LAZY_LOAD_IMAGE = "[object Object]";
-  $(".article-entry").find("fancybox").find("img").each(function () {
-      var element = document.createElement("a");
-      $(element).attr("data-fancybox", "gallery");
-      $(element).attr("href", $(this).attr("src"));
-      /* 图片采用懒加载处理时,
-       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
-       * 那么此处将原本的属性名src替换为对应属性名data-original,
-       * 修改如下
-       */
-       if (LAZY_LOAD_IMAGE) {
-         $(element).attr("href", $(this).attr("data-original"));
-       }
-      $(this).wrap(element);
-  });
-</script>
-
-
-
-
-
-
-  <script>setLoadingBarProgress(100);</script>
-<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+  </div>
+</body>
 </html>

@@ -256,8 +256,8 @@
           , g = {
             "zh-cn": {
                 head: {
-                    nick: "昵称",
-                    mail: "邮箱",
+                    nick: "昵称（必填）",
+                    mail: "邮箱（必填）",
                     link: "链接"
                 },
                 tips: {

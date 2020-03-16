@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://volantis.js.org/#2.1.4'>
+<head hexo-theme='https://volantis.js.org/#'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -44,15 +44,13 @@
   
 
   
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
-  
 
   <!-- import link -->
   
 
   
     
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.4.3/css/style.css">
 
   
 
@@ -75,10 +73,8 @@
   <div class='a'>
     
     
-      <p class="title">Volantis</p>
+      <p class="title">Chemlez</p>
     
-    
-      <p class="subtitle">A Wonderful Theme for Hexo</p>
     
   </div>
   <div class='b'>
@@ -96,55 +92,55 @@
           
             <li>
               <a class="nav home"
-                href="https://volantis.js.org/getting-started/"
+                href="/"
                 
                 
-                id="https:volantisjsorggetting-started">
-                <i class='fas fa-book fa-fw'></i>&nbsp;文档
+                id="home">
+                <i class='fas fa-home fa-fw'></i>&nbsp;主页
               </a>
             </li>
           
             <li>
               <a class="nav home"
-                href="https://volantis.js.org/archives/"
+                href="/categories/"
                 
                 
-                id="https:volantisjsorgarchives">
-                <i class='fas fa-rss fa-fw'></i>&nbsp;博文
+                id="categories">
+                <i class='fas fa-folder-open fa-fw'></i>&nbsp;分类
               </a>
             </li>
           
             <li>
               <a class="nav home"
-                href="https://volantis.js.org/examples/"
-                
-                
-                id="https:volantisjsorgexamples">
-                <i class='fas fa-play-circle fa-fw'></i>&nbsp;示例
-              </a>
-            </li>
-          
-            <li>
-              <a class="nav home"
-                href="https://github.com/xaoxuu/hexo-theme-volantis/"
+                href="/archives/"
                 
                   rel="external nofollow noopener noreferrer"
                 
                 
                   target="_blank"
                 
-                id="https:githubcomxaoxuuhexo-theme-volantis">
-                <i class='fas fa-file-code fa-fw'></i>&nbsp;源码
+                id="archives">
+                <i class='fas fa-archive fa-fw'></i>&nbsp;归档
               </a>
             </li>
           
             <li>
               <a class="nav home"
-                href="https://volantis.js.org/contributors/"
+                href="/friends/"
                 
                 
-                id="https:volantisjsorgcontributors">
-                <i class='fas fa-handshake fa-fw'></i>&nbsp;鸣谢
+                id="friends">
+                <i class='fas fa-link fa-fw'></i>&nbsp;友链
+              </a>
+            </li>
+          
+            <li>
+              <a class="nav home"
+                href="/about/"
+                
+                
+                id="about">
+                <i class='fas fa-info-circle fa-fw'></i>&nbsp;关于
               </a>
             </li>
           
@@ -177,7 +173,7 @@
           
           
           
-            VOLANTIS <b><sup style='color:#3AA757'>2.1.4</sup></b>
+            CHEMLEZ <b><sup style='color:#3AA757'></sup></b>
           
         </a>
       
@@ -197,9 +193,9 @@
                     id="home"
                   >
                   
-                    <i class='fas fa-rss fa-fw'></i>
+                    <i class='fas fa-home fa-fw'></i>
                   
-                  博客
+                  主页
                 </a>
                 
               </li>
@@ -209,23 +205,19 @@
             
             
               <li>
-                <a class="flat-box" href=/categories/
+                <a class="flat-box" 
                   
                   
-                  
-                    id="categories"
                   >
                   
-                    <i class='fas fa-folder-open fa-fw'></i>
+                    <i class='fas fa-list-alt fa-fw fa-fw'></i>
                   
-                  分类
+                  索引
                 </a>
                 
-              </li>
-            
-          
-          
-            
+                  <ul class="submenu">
+                    
+                      
             
               <li>
                 <a class="flat-box" href=/tags/
@@ -243,8 +235,27 @@
               </li>
             
           
-          
+                    
+                      
             
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  类别
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
             
               <li>
                 <a class="flat-box" href=/archives/
@@ -258,6 +269,12 @@
                   
                   归档
                 </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
                 
               </li>
             
@@ -333,9 +350,23 @@
           id="home"
         >
         
-          <i class='fas fa-rss fa-fw'></i>
+          <i class='fas fa-clock fa-fw fa-fw'></i>
         
-        博客
+        近期文章
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-list-alt fa-fw fa-fw'></i>
+        
+        文章归档
       </a>
     </li>
   
@@ -349,35 +380,7 @@
         
           <i class='fas fa-folder-open fa-fw'></i>
         
-        分类
-      </a>
-    </li>
-  
-    <li>
-      <a class="flat-box" href=/tags/
-        
-        
-        
-          id="tags"
-        >
-        
-          <i class='fas fa-tags fa-fw'></i>
-        
-        标签
-      </a>
-    </li>
-  
-    <li>
-      <a class="flat-box" href=/archives/
-        
-        
-        
-          id="archives"
-        >
-        
-          <i class='fas fa-archive fa-fw'></i>
-        
-        归档
+        文章类别
       </a>
     </li>
   
@@ -391,7 +394,7 @@
         
           <i class='fas fa-link fa-fw'></i>
         
-        友链
+        我的友链
       </a>
     </li>
   
@@ -405,7 +408,17 @@
         
           <i class='fas fa-info-circle fa-fw'></i>
         
-        关于
+        关于小站
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" 
+        
+        
+        >
+        
+        
       </a>
     </li>
   
@@ -423,7 +436,7 @@
   
 
   
-    <article id="page" class="post white-box shadow article-type-page" itemscope itemprop="blogPost">
+    <article id="page" class="post white-box shadow floatable article-type-page" itemscope itemprop="blogPost">
       
 
 
@@ -468,7 +481,22 @@
 
 
 
-  
+  <article class="post white-box comments shadow floatable">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> Comment</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
 
 
   
@@ -496,22 +524,6 @@
         <div class="aplayer-container">
           
 
-  
-    <meting-js
-      theme='#1BCDFC'
-      autoplay='false'
-      volume='0.7'
-      loop='all'
-      order='list'
-      fixed='false'
-      list-max-height='340px'
-      server='netease'
-      type='playlist'
-      id='3175833810'
-      list-folded='true'>
-    </meting-js>
-  
-
 
         </div>
       
@@ -521,23 +533,7 @@
         <div class="social-wrapper">
           
             
-              <a href="/atom.xml"
-                class="social fas fa-rss flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="mailto:me@xaoxuu.com"
-                class="social fas fa-envelope flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="https://github.com/xaoxuu"
+              <a href="https://github.com/Chemlez"
                 class="social fab fa-github flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
@@ -545,8 +541,16 @@
             
           
             
-              <a href="https://music.163.com/#/user/home?id=63035382"
-                class="social fas fa-headphones-alt flat-btn"
+              <a href="https://weibo.com/u/5653780011?nick=Sane_z&amp;is_all=1"
+                class="social fab fa-weibo flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:liizhi_1106@163.com"
+                class="social fas fa-envelope flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
               </a>
@@ -556,25 +560,8 @@
       
     
       
-        <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
-</div>
-      
-    
-      
-        Use
-        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
-        as theme
-        
-          , 
-          total visits
-          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-          times
-        
-      
-    
-      
         <div class='copyright'>
-        <p><a href="https://xaoxuu.com" target="_blank" rel="noopener">Copyright © 2017-2020 Mr. X</a></p>
+        <p><a href="https://liizhi.cn" target="_blank" rel="noopener">Copyright © 2019-2020 Chemlez</a></p>
 
         </div>
       
@@ -624,29 +611,90 @@
 
 
 
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
 
 
   
     
-<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js" async></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0/js/valine.js"></script>
 
   
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
     
-<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js" async></script>
+    appId: "YSitK1ig1lRcy3jvrtTzT6fb-MdYXbMMI",
+    appKey: "e7hFf2zqvyWgNmDsClWcM7W3",
+    placeholder: "有什么想对我说的呢？",
+    pageSize:'10',
+    avatar:'wavatar',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
 
   
-
-
-
-
-
-
-
-
-
-
-  
-<script src="/js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.4/js/app.js"></script>
 
 
 

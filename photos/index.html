@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head hexo-theme='https://volantis.js.org/#'>
+<head hexo-theme='https://volantis.js.org/#2.1.4'>
   <meta charset="utf-8">
   <!-- SEO相关 -->
   
@@ -44,13 +44,15 @@
   
 
   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css">
+  
 
   <!-- import link -->
   
 
   
     
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.4.3/css/style.css">
+<link rel="stylesheet" href="/css/style.css">
 
   
 
@@ -89,7 +91,7 @@
           
           
           
-            CHEMLEZ <b><sup style='color:#3AA757'></sup></b>
+            VOLANTIS <b><sup style='color:#3AA757'>2.1.4</sup></b>
           
         </a>
       
@@ -109,9 +111,9 @@
                     id="home"
                   >
                   
-                    <i class='fas fa-home fa-fw'></i>
+                    <i class='fas fa-rss fa-fw'></i>
                   
-                  主页
+                  博客
                 </a>
                 
               </li>
@@ -121,19 +123,23 @@
             
             
               <li>
-                <a class="flat-box" 
+                <a class="flat-box" href=/categories/
                   
                   
+                  
+                    id="categories"
                   >
                   
-                    <i class='fas fa-list-alt fa-fw fa-fw'></i>
+                    <i class='fas fa-folder-open fa-fw'></i>
                   
-                  索引
+                  分类
                 </a>
                 
-                  <ul class="submenu">
-                    
-                      
+              </li>
+            
+          
+          
+            
             
               <li>
                 <a class="flat-box" href=/tags/
@@ -151,27 +157,8 @@
               </li>
             
           
-                    
-                      
-            
-              <li>
-                <a class="flat-box" href=/categories/
-                  
-                  
-                  
-                    id="categories"
-                  >
-                  
-                    <i class='fas fa-folder-open fa-fw'></i>
-                  
-                  类别
-                </a>
-                
-              </li>
-            
           
-                    
-                      
+            
             
               <li>
                 <a class="flat-box" href=/archives/
@@ -185,12 +172,6 @@
                   
                   归档
                 </a>
-                
-              </li>
-            
-          
-                    
-                  </ul>
                 
               </li>
             
@@ -258,6 +239,90 @@
 <ul class="menu-phone navigation white-box">
   
   
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-rss fa-fw'></i>
+        
+        博客
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        分类
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-archive fa-fw'></i>
+        
+        归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于
+      </a>
+    </li>
+  
 </ul>
 <script>setLoadingBarProgress(40);</script>
 
@@ -271,7 +336,7 @@
   
 
   
-    <article id="post" class="post white-box shadow floatable article-type-post" itemscope itemprop="blogPost">
+    <article id="post" class="post white-box shadow article-type-post" itemscope itemprop="blogPost">
       
 
 
@@ -298,9 +363,9 @@
           
             
 <div class='new-meta-item author'>
-  <a href="https://liizhi.cn" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
-    <p>Chemlez</p>
+  <a href="https://xaoxuu.com" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/avatar/avatar.png">
+    <p>Mr. X</p>
   </a>
 </div>
 
@@ -390,22 +455,28 @@
   
     
     
+
+<section class="widget qrcode  desktop mobile">
   
 
-  <section class="widget related_posts  desktop mobile">
+  <div class='content article-entry'>
     
-  <header>
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
     
-      <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span class='name'>相关文章</span>
+      
+        <fancybox><img src='https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/qrcode/wiki_volantis.png'
+        
+          height='64px'
+        ></fancybox>
+      
     
-  </header>
-
-
-    <div class="content">
-      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2020/01/17/Linux-Ubuntu的安装与相关设置/" title="Linux-Ubuntu的安装与相关设置" rel="bookmark">Linux-Ubuntu的安装与相关设置</a></h3></div></li></ul>
-    </div>
-  </section>
-
+  </div>
+</section>
 
   
 
@@ -426,6 +497,11 @@
     <p>更新于：Aug 24, 2019</p>
   </a>
 </div>
+
+        
+      
+        
+          
 
         
       
@@ -475,16 +551,6 @@
         </a>
       
     
-      
-        
-        <div class='hoverbox'>
-          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
-          <div class='target'>
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPgAAAD4CAAAAADkunTXAAACUElEQVR42u3aS27DMAwFwNz/0u2+QGD+4tTUaBcnkTlaPZB6/Ry6XuDg4ODg4Ivgr+J6u/Gf79/9PrvPVL3g4ODg4OAb4eEAEIRFC73aN/u+y3rBwcHBwcEXw7MFZp9XwVP1goODg4ODg8cDy1QDAhwcHBwcHHwenh00XO3bfT84ODg4OPjJ8GyDvgubvlBw2yQFHBwcHBz8H8HLF+a+9LlcLzg4ODg4+CL49IoGnKkBRLo+cHBwcHDwRfBuoMgO8KuNi+pBg4ODg4ODnwCvBolsI6AaiLr1gYODg4ODnwCPPs8WFoVlg0r2oMDBwcHBwU+AdwcF3QNsNxyyjQhwcHBwcPAHw7uN/uyFwOigotqICAcYcHBwcHDwB8M/1SjI/m/qQMMDBXBwcHBw8EXwbjCIHmD1YkC0rnSAAQcHBwcHXwjPAu9qMGQD1NuBAjg4ODg4+AJ4tcGQfWH1wKqNiPQkBRwcHBwc/IHwKdBUw7862AgfCDg4ODg4+CJ4tqDu87sGFOXkBg4ODg4O/iB4tyHRHSBEGw23TVLAwcHBwcEfBM8GirsCzMcOCBwcHBwcfBG8u7IH1b0AkA1Wl40IcHBwcHDwB8OnGgTRIFJtUHQDEDg4ODg4+GZ4dyDfDSDZAUU5QIGDg4ODgy+GdwPE1EWBbqMiHWDAwcHBwcEPhGcv2HUvGowPFMDBwcHBwQ+GVwcBWWi2zq81IsDBwcHBwb8InwocU5CpQAUODg4ODr4Z3n1xN+hE980GrcsAAw4ODg4O/mD4aQscHBwcHHzB+gUxA0IM+/CC4wAAAABJRU5ErkJggg==">
-          </div>
-        </div>
-      
-    
   </div>
 </div>
 
@@ -531,120 +597,6 @@
 <aside class='l_side'>
   
   
-    
-    
-
-<section class="widget blogger shadow floatable desktop">
-  <div class='content'>
-    
-      <div class='avatar'>
-        <img class='avatar' src='https://s1.ax1x.com/2020/03/13/8mvbCj.jpg'/>
-      </div>
-    
-    
-      <div class='text'>
-        
-        
-        
-          <p><span id="jinrishici-sentence">Liz'blog</span></p>
-          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-        
-      </div>
-    
-    
-      <div class="social-wrapper">
-        
-          
-            <a href="https://github.com/Chemlez"
-              class="social fab fa-github flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="https://weibo.com/u/5653780011?nick=Sane_z&is_all=1"
-              class="social fab fa-weibo flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-          
-            <a href="mailto:liizhi_1106@163.com"
-              class="social fas fa-envelope flat-btn"
-              target="_blank"
-              rel="external nofollow noopener noreferrer">
-            </a>
-          
-        
-      </div>
-    
-  </div>
-</section>
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget category shadow floatable desktop">
-    
-  <header>
-    
-      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <ul class="entry navigation">
-        
-          <li><a class="flat-box"
-            title="/categories/Linux/" href="/categories/Linux/"
-            id="categoriesLinux"
-            ><div class='name'>Linux</div><div class='badge'>(2)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Machine-Learning/" href="/categories/Machine-Learning/"
-            id="categoriesMachine-Learning"
-            ><div class='name'>Machine Learning</div><div class='badge'>(1)</div></a></li>
-        
-          <li><a class="flat-box"
-            title="/categories/Python/" href="/categories/Python/"
-            id="categoriesPython"
-            ><div class='name'>Python</div><div class='badge'>(1)</div></a></li>
-        
-      </ul>
-    </div>
-  </section>
-
-
-  
-
-  
-    
-    
-  
-
-  <section class="widget tagcloud shadow floatable desktop">
-    
-  <header>
-    
-      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
-    
-  </header>
-
-
-    <div class='content'>
-      <a href="/tags/DecisionTree/" style="font-size: 14px; color: #999">DecisionTree</a> <a href="/tags/Kaggle/" style="font-size: 14px; color: #999">Kaggle</a> <a href="/tags/Linux/" style="font-size: 24px; color: #555">Linux</a> <a href="/tags/MySQL/" style="font-size: 14px; color: #999">MySQL</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/VMware/" style="font-size: 14px; color: #999">VMware</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a>
-    </div>
-  </section>
-
-
-  
 
   
     
@@ -666,6 +618,22 @@
         <div class="aplayer-container">
           
 
+  
+    <meting-js
+      theme='#1BCDFC'
+      autoplay='false'
+      volume='0.7'
+      loop='all'
+      order='list'
+      fixed='false'
+      list-max-height='340px'
+      server='netease'
+      type='playlist'
+      id='3175833810'
+      list-folded='true'>
+    </meting-js>
+  
+
 
         </div>
       
@@ -675,7 +643,23 @@
         <div class="social-wrapper">
           
             
-              <a href="https://github.com/Chemlez"
+              <a href="/atom.xml"
+                class="social fas fa-rss flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:me@xaoxuu.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://github.com/xaoxuu"
                 class="social fab fa-github flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
@@ -683,16 +667,8 @@
             
           
             
-              <a href="https://weibo.com/u/5653780011?nick=Sane_z&amp;is_all=1"
-                class="social fab fa-weibo flat-btn"
-                target="_blank"
-                rel="external nofollow noopener noreferrer">
-              </a>
-            
-          
-            
-              <a href="mailto:liizhi_1106@163.com"
-                class="social fas fa-envelope flat-btn"
+              <a href="https://music.163.com/#/user/home?id=63035382"
+                class="social fas fa-headphones-alt flat-btn"
                 target="_blank"
                 rel="external nofollow noopener noreferrer">
               </a>
@@ -702,8 +678,25 @@
       
     
       
+        <div><p>Blog content follows the <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener">Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License</a></p>
+</div>
+      
+    
+      
+        Use
+        <a href="https://volantis.js.org/" target="_blank" class="codename">Volantis</a>
+        as theme
+        
+          , 
+          total visits
+          <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+          times
+        
+      
+    
+      
         <div class='copyright'>
-        <p><a href="https://liizhi.cn" target="_blank" rel="noopener">Copyright © 2019-2020 Chemlez</a></p>
+        <p><a href="https://xaoxuu.com" target="_blank" rel="noopener">Copyright © 2017-2020 Mr. X</a></p>
 
         </div>
       
@@ -753,45 +746,16 @@
 
 
 
-  
-  
+
+
   
     
-<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.js" async></script>
 
-    <script type="text/javascript">
-      $(function(){
-        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
-        if ('true' == 'true') {
-          function shuffle(arr){
-            /*From countercurrent-time*/
-            var n = arr.length;
-            while(n--) {
-              var index = Math.floor(Math.random() * n);
-              var temp = arr[index];
-              arr[index] = arr[n];
-              arr[n] = temp;
-            }
-          }
-          shuffle(imgs);
-        }
-        if ('.cover') {
-          $('.cover').backstretch(
-            imgs,
-          {
-            duration: "20000",
-            fade: "1500"
-          });
-        } else {
-          $.backstretch(
-            imgs,
-          {
-            duration: "20000",
-            fade: "1500"
-          });
-        }
-      });
-    </script>
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/meting@2.0/dist/Meting.min.js" async></script>
+
   
 
 
@@ -803,10 +767,8 @@
 
 
 
-
-
   
-<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.4/js/app.js"></script>
+<script src="/js/app.js"></script>
 
 
 

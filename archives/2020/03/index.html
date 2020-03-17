@@ -18,7 +18,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>Archive: 2019/10 - Liz&#39;blog</title>
+    <title>Archive: 2020/3 - Liz&#39;blog</title>
   
   
 
@@ -466,8 +466,8 @@
       
         
   <h2 class="title">
-    <a href="/2019/10/22/%E5%BA%8F%E5%88%97%E4%B9%8B%E6%B7%B1%E6%8B%B7%E8%B4%9D-%E6%B5%85%E6%8B%B7%E8%B4%9D/">
-      序列之深拷贝/浅拷贝
+    <a href="/2020/03/18/JDBC%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">
+      JDBC基础使用
     </a>
   </h2>
 
@@ -492,9 +492,9 @@
             
   
   <div class='new-meta-item category'>
-    <a href='/categories/Python/' rel="nofollow">
+    <a href='/categories/Java/' rel="nofollow">
       <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Python</p>
+      <p>Java</p>
     </a>
   </div>
 
@@ -505,7 +505,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：Oct 22, 2019</p>
+    <p>发布于：Mar 18, 2020</p>
   </a>
 </div>
 
@@ -522,7 +522,7 @@
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half" aria-hidden="true"></i>
-      <p>4 min</p>
+      <p>5 min</p>
     </a>
   </div>
 
@@ -544,23 +544,96 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <p>在上周的Python科学计算课上，老师讲到了Python序列的浅拷贝以及深拷贝方面的知识，个人觉得说得比较言简意赅了，对于我这个刚入Python的新手来说，也基本可以避免今后变量的赋值使用错乱的问题。</p>
-<p>这里我们简单的将Python中的标准数据类型分为两类：</p>
-<ul>
-<li>不可变数据类型：int、float、string、boolean</li>
-<li>可变（组合）数据类型：列表（list）、字典（dict）、集合(set)</li>
+      <p><code>JDBC:Java DataBase Connectivity</code>,即为Java数据库连接。</p>
+<p><code>JDBC</code>是Java语言中用来规范客户端程序如何来访问数据库的应用程序接口，提供了诸如查询和更新数据库中数据的方法。即：定义的一套操作所有关系型数据库的规则，是为接口。各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以使用这套接(JDBC)编程，真正执行的代码是驱动jar包中的实现类。</p>
+<p>https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="<img src="" alt="Itcast图"></p>
+<h2 id="JDBC简单使用阶段"><a href="#JDBC简单使用阶段" class="headerlink" title="JDBC简单使用阶段"></a>JDBC简单使用阶段</h2><h4 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h4><ul>
+<li>步骤：<ol>
+<li>导入驱动jar包 mysql-connector-java-5.1.37-bin.jar<br> 1.复制mysql-connector-java-5.1.37-bin.jar到项目的libs目录下<br> 2.右键–&gt;Add As Library</li>
+<li>注册驱动</li>
+<li>获取数据库连接对象 Connection</li>
+<li>定义sql</li>
+<li>获取执行sql语句的对象 Statement</li>
+<li>执行sql，接受返回结果</li>
+<li>处理结果</li>
+<li>释放资源</li>
+</ol>
+</li>
 </ul>
-<p>先举几个例子：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="number">1</span> <span class="comment"># a为上述定义的不可变数据类型</span></span><br><span class="line">b = a</span><br><span class="line">print(<span class="string">'b=&#123;&#125;'</span>.format(b)) <span class="comment"># b = 1</span></span><br><span class="line">--------</span><br><span class="line">b = <span class="number">2</span></span><br><span class="line">print(<span class="string">'a = &#123;&#125;,b = &#123;&#125;'</span>.format(a,b)) <span class="comment"># a = 1,b = 2</span></span><br><span class="line"></span><br><span class="line">========</span><br><span class="line"></span><br><span class="line">c = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>] <span class="comment"># b为上述定义的组合数据类型 </span></span><br><span class="line">d = c</span><br><span class="line">print(<span class="string">'c = &#123;&#125;,d = &#123;&#125;'</span>.format(c,d)) <span class="comment"># c = [1, 2, 3],d = [1, 2, 3]</span></span><br><span class="line">d.append(<span class="number">4</span>) </span><br><span class="line">print(<span class="string">'c = &#123;&#125;,d = &#123;&#125;'</span>.format(c,d)) <span class="comment"># c = [1, 2, 3, 4],d = [1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCDemo01</span> </span>&#123;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 更新一条数据库数据</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> Exception</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">//1.导入驱动jar包（类似于Python中的第三方库</span></span><br><span class="line">        <span class="comment">//2.注册驱动</span></span><br><span class="line">        Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);<span class="comment">//</span></span><br><span class="line">        <span class="comment">//3.获取数据库连接对象 jdbc:mysql://localhost:3306/databases 本机</span></span><br><span class="line">        Connection conn = DriverManager.getConnection(<span class="string">"jdbc:mysql://url:port/Database"</span>, <span class="string">"username"</span>, <span class="string">"password"</span>);</span><br><span class="line">        <span class="comment">//4.定义sql语句</span></span><br><span class="line">        String sql = <span class="string">"update account set balance = 500 where id = 1"</span>;</span><br><span class="line">        <span class="comment">//5.获取执行sql的对象Statement</span></span><br><span class="line">        Statement stmt = conn.createStatement();</span><br><span class="line">        <span class="comment">//6.执行sql</span></span><br><span class="line">        <span class="keyword">int</span> count = stmt.executeUpdate(sql);</span><br><span class="line">        <span class="comment">//7.处理结果</span></span><br><span class="line">        System.out.println(count);</span><br><span class="line">        stmt.close();</span><br><span class="line">        conn.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>从上述的例子当中看出，在不可变数据类型中，所定义的变量的值在后来改变（这里是b），并不会引起原来赋给它值的那个量的改变（这里是a）；而在组合数据类型中就发生了改变，我们只是将d的值进行了改变，并没有直接改变c的值，最后c的值却也发生了变化。</p>
+<p>因为，在数据库连接、SQL语句的执行等等过程中，可能会发生异常，报错等。但是，数据库的资源要归还，故采用异常处理的方式，关闭数据库连接。</p>
+<p><strong>处理异常的方式：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.sql.Statement;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 1.采用异常的方式通过JDBC连接数据库</span></span><br><span class="line"><span class="comment"> * 2.插入一条语句</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCDemo02</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 为了使Connection方法可以接受到值，故将参数提升到成员变量的位置上</span></span><br><span class="line">        Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">        Connection conn = <span class="keyword">null</span>;</span><br><span class="line">        <span class="comment">// 异常捕获的方式处理异常</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//1.注册驱动</span></span><br><span class="line">            Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line">            <span class="comment">//2.定义SQL语句</span></span><br><span class="line">            String sql = <span class="string">"insert into account values(null,'Lisa',2000)"</span>;</span><br><span class="line">            <span class="comment">//3.获取连接对象 </span></span><br><span class="line">            conn = DriverManager.getConnection(<span class="string">"jdbc:mysql://url:port/db3"</span>, <span class="string">"username"</span>, <span class="string">"password"</span>);</span><br><span class="line">            <span class="comment">//4.获取执行sql对象</span></span><br><span class="line">            stmt = conn.createStatement();</span><br><span class="line">            <span class="comment">//5.执行sql</span></span><br><span class="line">            <span class="keyword">int</span> count = stmt.executeUpdate(sql);</span><br><span class="line">            <span class="keyword">if</span> (count &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                System.out.println(<span class="string">"修改成功"</span>);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                System.out.println(<span class="string">"修改失败"</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (stmt != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    stmt.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (conn != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    conn.close();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h4><ol>
+<li><p><code>DriverManager：驱动管理对象</code></p>
+<p>用于注册驱动，jar包导入。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">通过查看源码发现：在com.mysql.jdbc.Driver类中存在静态代码块</span><br><span class="line">				 <span class="keyword">static</span> &#123;</span><br><span class="line">				        <span class="keyword">try</span> &#123;</span><br><span class="line">				            java.sql.DriverManager.registerDriver(<span class="keyword">new</span> Driver());</span><br><span class="line">				        &#125; <span class="keyword">catch</span> (SQLException E) &#123;</span><br><span class="line">				            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Can't register driver!"</span>);</span><br><span class="line">				        &#125;</span><br><span class="line">					&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>原因：</strong>文件的读取，只需要读取一次，即可拿到这些值。故使用静态代码块完成。</p>
+</li>
+<li><p><code>static Connection getConnection(String url, String user, String password)</code></p>
+<p><code>Connection</code>：数据库连接对象</p>
+<p>功能：</p>
+<ol>
+<li><p>获取执行sql的对象</p>
+<ul>
+<li><p><code>Statement createStatement()</code></p>
+</li>
+<li><p><code>PreparedStatement prepareStatement(String sql)</code>  </p>
+<ol start="2">
+<li>事务管理：</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>开启事务：setAutoCommit(boolean autoCommit) ：调用该方法设置参数为false，即开启事务</p>
+</li>
+<li><p>提交事务：commit() </p>
+</li>
+<li><p>回滚事务：rollback() </p>
+<pre><code>3. `Statement`：执行sql的对象</code></pre></li>
+</ul>
+<p><strong>注意</strong>：<code>createStatement</code>方法会造成SQL注入的问题，后期采用<code>PreparedStatement</code>来执行SQL对象，并采用预编译的方式，采用参数<code>?</code>作为占位符,且效率更高。</p>
+<pre><code>4. `ResultSet`：结果集对象,封装查询结果(next,类似指针移动取值方法)</code></pre><ul>
+<li>boolean next(): 游标向下移动一行，判断当前行是否是最后一行末尾(是否有数据)，如果是，则返回false，如果不是则返回true.</li>
+<li>getXxx(参数):获取数据.<ul>
+<li>其中Int代表列的编号，参数<strong>从1开始</strong>。</li>
+<li>String代表列的名称（参数）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="JDBC操作数据库的一般SQL语法"><a href="#JDBC操作数据库的一般SQL语法" class="headerlink" title="JDBC操作数据库的一般SQL语法"></a>JDBC操作数据库的一般SQL语法</h4><ol>
+<li>更新操作</li>
+</ol>
+<p><code>String sql = &quot;update account set balance = 500 where id = 1&quot;;</code></p>
+<ol start="2">
+<li>插入操作</li>
+</ol>
+<p><code>String sql = &quot;insert into account values(null,&#39;Lisa&#39;,2000)&quot;;</code></p>
+<ol start="3">
+<li>删除操作</li>
+</ol>
+<p><code>String sql = &quot;delete from account where id = 3&quot;;</code></p>
+<ol start="4">
+<li>创建操作</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"create table student (id int primary key not null,name varchar(20))"</span>;</span><br><span class="line">stmt = conn.createStatement();</span><br><span class="line"><span class="keyword">int</span> count = stmt.executeUpdate(sql);<span class="comment">//处理结果，创建表返回的为0</span></span><br><span class="line">System.out.println(count);</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>查询操作</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"select * from account"</span>;</span><br><span class="line">stmt = conn.createStatement();</span><br><span class="line">resultSet = stmt.executeQuery(sql);</span><br><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123; <span class="comment">//resultSet指针下移一行，并判断当前行内容是否为空，内容不为空，进入循环体</span></span><br><span class="line">    <span class="keyword">int</span> id = resultSet.getInt(<span class="number">1</span>);<span class="comment">// 取第一列的元素</span></span><br><span class="line">    String name = resultSet.getString(<span class="string">"NAME"</span>);</span><br><span class="line">    <span class="keyword">int</span> balance = resultSet.getInt(<span class="number">3</span>);</span><br><span class="line">    System.out.println(id + <span class="string">"---"</span> + name + <span class="string">"---"</span> + balance);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
       
-        
-          <div class="button readmore">
-            <a href="/2019/10/22/%E5%BA%8F%E5%88%97%E4%B9%8B%E6%B7%B1%E6%8B%B7%E8%B4%9D-%E6%B5%85%E6%8B%B7%E8%B4%9D/">
-              Read More <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
         
       
     </div>

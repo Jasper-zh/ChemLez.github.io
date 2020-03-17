@@ -590,37 +590,26 @@
 <li><p><code>static Connection getConnection(String url, String user, String password)</code></p>
 <p><code>Connection</code>：数据库连接对象</p>
 <p>功能：</p>
-<ol>
-<li><p>获取执行sql的对象</p>
-<ul>
-<li><p><code>Statement createStatement()</code></p>
-</li>
-<li><p><code>PreparedStatement prepareStatement(String sql)</code>  </p>
-<ol start="2">
-<li>事务管理：</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><p>开启事务：setAutoCommit(boolean autoCommit) ：调用该方法设置参数为false，即开启事务</p>
-</li>
-<li><p>提交事务：commit() </p>
-</li>
-<li><p>回滚事务：rollback() </p>
-<pre><code>3. `Statement`：执行sql的对象</code></pre></li>
-</ul>
-<p><strong>注意</strong>：<code>createStatement</code>方法会造成SQL注入的问题，后期采用<code>PreparedStatement</code>来执行SQL对象，并采用预编译的方式，采用参数<code>?</code>作为占位符,且效率更高。</p>
-<pre><code>4. `ResultSet`：结果集对象,封装查询结果(next,类似指针移动取值方法)</code></pre><ul>
-<li>boolean next(): 游标向下移动一行，判断当前行是否是最后一行末尾(是否有数据)，如果是，则返回false，如果不是则返回true.</li>
-<li>getXxx(参数):获取数据.<ul>
-<li>其中Int代表列的编号，参数<strong>从1开始</strong>。</li>
-<li>String代表列的名称（参数）。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
+<pre><code>1. 获取执行sql的对象
+    * `Statement createStatement()`
+    * `PreparedStatement prepareStatement(String sql)`  
+
+2. 事务管理：
+
+* 开启事务：setAutoCommit(boolean autoCommit) ：调用该方法设置参数为false，即开启事务
+* 提交事务：commit() 
+* 回滚事务：rollback() 
+
+3. `Statement`：执行sql的对象
+
+**注意**：`createStatement`方法会造成SQL注入的问题，后期采用`PreparedStatement`来执行SQL对象，并采用预编译的方式，采用参数`?`作为占位符,且效率更高。
+
+4. `ResultSet`：结果集对象,封装查询结果(next,类似指针移动取值方法)
+
+* boolean next(): 游标向下移动一行，判断当前行是否是最后一行末尾(是否有数据)，如果是，则返回false，如果不是则返回true.
+* getXxx(参数):获取数据.
+    - 其中Int代表列的编号，参数**从1开始**。
+    - String代表列的名称（参数）。</code></pre></li>
 </ol>
 <h4 id="JDBC操作数据库的一般SQL语法"><a href="#JDBC操作数据库的一般SQL语法" class="headerlink" title="JDBC操作数据库的一般SQL语法"></a>JDBC操作数据库的一般SQL语法</h4><ol>
 <li>更新操作</li>

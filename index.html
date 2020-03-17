@@ -557,8 +557,11 @@
     <div class="article-entry" itemprop="articleBody">
       <p><code>JDBC:Java DataBase Connectivity</code>,即为Java数据库连接。</p>
 <p><code>JDBC</code>是Java语言中用来规范客户端程序如何来访问数据库的应用程序接口，提供了诸如查询和更新数据库中数据的方法。即：定义的一套操作所有关系型数据库的规则，是为接口。各个数据库厂商去实现这套接口，提供数据库驱动jar包。我们可以使用这套接(JDBC)编程，真正执行的代码是驱动jar包中的实现类。</p>
-<p>https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="<img src="" alt="Itcast图"></p>
-<h2 id="JDBC简单使用阶段"><a href="#JDBC简单使用阶段" class="headerlink" title="JDBC简单使用阶段"></a>JDBC简单使用阶段</h2><h4 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h4><ul>
+<fancybox>
+<img src='https://s1.ax1x.com/2020/03/18/8da5k9.png'>
+</fancybox>
+
+<h2 id="JDBC简单使用"><a href="#JDBC简单使用" class="headerlink" title="JDBC简单使用"></a>JDBC简单使用</h2><h4 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h4><ul>
 <li>步骤：<ol>
 <li>导入驱动jar包 mysql-connector-java-5.1.37-bin.jar<br> 1.复制mysql-connector-java-5.1.37-bin.jar到项目的libs目录下<br> 2.右键–&gt;Add As Library</li>
 <li>注册驱动</li>
@@ -641,8 +644,10 @@
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"select * from account"</span>;</span><br><span class="line">stmt = conn.createStatement();</span><br><span class="line">resultSet = stmt.executeQuery(sql);</span><br><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123; <span class="comment">//resultSet指针下移一行，并判断当前行内容是否为空，内容不为空，进入循环体</span></span><br><span class="line">    <span class="keyword">int</span> id = resultSet.getInt(<span class="number">1</span>);<span class="comment">// 取第一列的元素</span></span><br><span class="line">    String name = resultSet.getString(<span class="string">"NAME"</span>);</span><br><span class="line">    <span class="keyword">int</span> balance = resultSet.getInt(<span class="number">3</span>);</span><br><span class="line">    System.out.println(id + <span class="string">"---"</span> + name + <span class="string">"---"</span> + balance);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><blockquote>
+<p>[1] <a href="[https://baike.baidu.com/item/Java%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5/1173389?fromtitle=JDBC&fromid=485214&fr=aladdin](https://baike.baidu.com/item/Java数据库连接/1173389?fromtitle=JDBC&fromid=485214&fr=aladdin)">Java数据库连接</a></p>
+<p>[2] <a href="http://www.itheima.com/" target="_blank" rel="noopener">Itcast视频资料</a></p>
+</blockquote>
 
       
         

@@ -21,6 +21,25 @@
     <meta name="keywords" content="爬虫,正则表达式,Request,Beautifulsoup">
   
   
+    <meta name="description" content="一、Requests库的7个主要方法
+
+
+方法
+说明
+
+
+
+requests.request()
+构造一个请求，支撑一下各方法的基础方法
+
+
+requests.get()
+获取HTML网页的主要方法，对应于HTTP的GET
+
+
+requests.head()
+获取HTML网页头信息的方法，对应于HTTP的HEAD...">
+  
 
   <!-- feed -->
   
@@ -478,6 +497,10 @@
 <li><code>params</code>:url中的额外参数，字典或字节流格式，可选</li>
 <li><code>**kwargs</code>:12个控制访问的参数</li>
 </ul>
+<a id="more"></a>
+
+
+
 <h5 id="2-Response对象的属性"><a href="#2-Response对象的属性" class="headerlink" title="2.Response对象的属性"></a>2.Response对象的属性</h5><table>
 <thead>
 <tr>
@@ -1310,7 +1333,7 @@
     <div class='new-meta-box'>
       
         
-          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-18T17:38:27+08:00">
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-03-18T17:39:43+08:00">
   <a class='notlink'>
     <i class="fas fa-save" aria-hidden="true"></i>
     <p>更新于：Mar 18, 2020</p>
@@ -1335,7 +1358,53 @@
       
         <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.liizhi.cn/2020/03/18/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/&title=Python爬虫基础入门 - Liz'blog&summary="
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.liizhi.cn/2020/03/18/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/&title=Python爬虫基础入门 - Liz'blog&summary=一、Requests库的7个主要方法
+
+
+方法
+说明
+
+
+
+requests.request()
+构造一个请求，支撑一下各方法的基础方法
+
+
+requests.get()
+获取HTML网页的主要方法，对应于HTTP的GET
+
+
+requests.head()
+获取HTML网页头信息的方法，对应于HTTP的HEAD
+
+
+requests.post()
+向HTML网页提交POST请求的方法，对应于HTTP的POST
+
+
+requests.put()
+向HTML网页提交PUT请求的方法，对应于HTTP的PUT
+
+
+requests.pathch()
+向HTML网页提交局部修改请求，对应于HTTP的PATCH
+
+
+requests.delete()
+向HTML页面提交删除请求，对应于HTTP的DELETE
+
+
+1.requests.getr = requests.get(url)
+
+返回一个包含服务器资源的Response对象，包含爬虫返回的全部内容
+构造一个向服务器请求资源的Request对象
+
+requests.get(url,params=None,**kwargs)
+
+url:拟获取网页的url链接
+params:url中的额外参数，字典或字节流格式，可选
+**kwargs:12个控制访问的参数
+"
           
           >
           
@@ -1347,7 +1416,53 @@
       
         <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
           
-          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.liizhi.cn/2020/03/18/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/&title=Python爬虫基础入门 - Liz'blog&summary="
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.liizhi.cn/2020/03/18/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/&title=Python爬虫基础入门 - Liz'blog&summary=一、Requests库的7个主要方法
+
+
+方法
+说明
+
+
+
+requests.request()
+构造一个请求，支撑一下各方法的基础方法
+
+
+requests.get()
+获取HTML网页的主要方法，对应于HTTP的GET
+
+
+requests.head()
+获取HTML网页头信息的方法，对应于HTTP的HEAD
+
+
+requests.post()
+向HTML网页提交POST请求的方法，对应于HTTP的POST
+
+
+requests.put()
+向HTML网页提交PUT请求的方法，对应于HTTP的PUT
+
+
+requests.pathch()
+向HTML网页提交局部修改请求，对应于HTTP的PATCH
+
+
+requests.delete()
+向HTML页面提交删除请求，对应于HTTP的DELETE
+
+
+1.requests.getr = requests.get(url)
+
+返回一个包含服务器资源的Response对象，包含爬虫返回的全部内容
+构造一个向服务器请求资源的Request对象
+
+requests.get(url,params=None,**kwargs)
+
+url:拟获取网页的url链接
+params:url中的额外参数，字典或字节流格式，可选
+**kwargs:12个控制访问的参数
+"
           
           >
           
@@ -1359,7 +1474,53 @@
       
         <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
           
-          href="http://service.weibo.com/share/share.php?url=https://www.liizhi.cn/2020/03/18/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/&title=Python爬虫基础入门 - Liz'blog&summary="
+          href="http://service.weibo.com/share/share.php?url=https://www.liizhi.cn/2020/03/18/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/&title=Python爬虫基础入门 - Liz'blog&summary=一、Requests库的7个主要方法
+
+
+方法
+说明
+
+
+
+requests.request()
+构造一个请求，支撑一下各方法的基础方法
+
+
+requests.get()
+获取HTML网页的主要方法，对应于HTTP的GET
+
+
+requests.head()
+获取HTML网页头信息的方法，对应于HTTP的HEAD
+
+
+requests.post()
+向HTML网页提交POST请求的方法，对应于HTTP的POST
+
+
+requests.put()
+向HTML网页提交PUT请求的方法，对应于HTTP的PUT
+
+
+requests.pathch()
+向HTML网页提交局部修改请求，对应于HTTP的PATCH
+
+
+requests.delete()
+向HTML页面提交删除请求，对应于HTTP的DELETE
+
+
+1.requests.getr = requests.get(url)
+
+返回一个包含服务器资源的Response对象，包含爬虫返回的全部内容
+构造一个向服务器请求资源的Request对象
+
+requests.get(url,params=None,**kwargs)
+
+url:拟获取网页的url链接
+params:url中的额外参数，字典或字节流格式，可选
+**kwargs:12个控制访问的参数
+"
           
           >
           

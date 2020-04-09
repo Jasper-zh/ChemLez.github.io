@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html>
+<head hexo-theme='https://volantis.js.org/#'>
+  <meta charset="utf-8">
+  <!-- SEO相关 -->
+  
+    
+  
+  <!-- 渲染优化 -->
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!-- 页面元数据 -->
+  
+    <title>对小木虫考研调剂信息的爬取 - Liz&#39;blog</title>
+  
+    <meta name="keywords" content="爬虫,正则表达式,Request,Beautifulsoup">
+  
+  
+    <meta name="description" content="一、说明由于国家线快出了，故写了一份爬取小木虫网站调剂信息的爬虫代码，方便信息查看。此代码仅用于学习，不作为任何商业用途。">
+  
+
+  <!-- feed -->
+  
+
+  <!-- import meta -->
+  
+
+  <!-- link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css">
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+
+  
+
+  
+  <link rel="shortcut icon" type='image/x-icon' href="https://s1.ax1x.com/2020/03/15/81ZR5F.jpg">
+  
+
+  
+
+  <!-- import link -->
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.5.2/css/style.css">
+
+  
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+  
+  <div id="loading-bar-wrapper">
+  <div id="loading-bar"></div>
+</div>
+<header class="l_header shadow blur">
+
+  <div class='wrapper'>
+    <div class='nav-sub container--flex'>
+      <a class="logo flat-box"></a>
+      <ul class='switcher h-list'>
+        <li><a class="s-comment flat-btn fas fa-comments fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+          <li><a class="s-toc flat-btn fas fa-list fa-fw" target="_self" href='javascript:void(0)'></a></li>
+        
+      </ul>
+    </div>
+		<div class="nav-main container container--flex">
+      
+        
+        <a class="logo flat-box" target="_self" href='/'>
+          
+          
+          
+          
+            CHEMLEZ <b><sup style='color:#3AA757'></sup></b>
+          
+        </a>
+      
+
+			<div class='menu navigation'>
+				<ul class='h-list'>
+          
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/
+                  
+                  
+                  
+                    id="home"
+                  >
+                  
+                    <i class='fas fa-home fa-fw'></i>
+                  
+                  主页
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" 
+                  
+                  
+                  >
+                  
+                    <i class='fas fa-list-alt fa-fw fa-fw'></i>
+                  
+                  索引
+                </a>
+                
+                  <ul class="submenu">
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/tags/
+                  
+                  
+                  
+                    id="tags"
+                  >
+                  
+                    <i class='fas fa-tags fa-fw'></i>
+                  
+                  标签
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/categories/
+                  
+                  
+                  
+                    id="categories"
+                  >
+                  
+                    <i class='fas fa-folder-open fa-fw'></i>
+                  
+                  类别
+                </a>
+                
+              </li>
+            
+          
+                    
+                      
+            
+              <li>
+                <a class="flat-box" href=/archives/
+                  
+                  
+                  
+                    id="archives"
+                  >
+                  
+                    <i class='fas fa-archive fa-fw'></i>
+                  
+                  归档
+                </a>
+                
+              </li>
+            
+          
+                    
+                  </ul>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/friends/
+                  
+                  
+                  
+                    id="friends"
+                  >
+                  
+                    <i class='fas fa-link fa-fw'></i>
+                  
+                  友链
+                </a>
+                
+              </li>
+            
+          
+          
+            
+            
+              <li>
+                <a class="flat-box" href=/about/
+                  
+                  
+                  
+                    id="about"
+                  >
+                  
+                    <i class='fas fa-info-circle fa-fw'></i>
+                  
+                  关于
+                </a>
+                
+              </li>
+            
+          
+          
+				</ul>
+			</div>
+
+      
+        <div class="m_search">
+          <form name="searchform" class="form u-search-form">
+            <i class="icon fas fa-search fa-fw"></i>
+            <input type="text" class="input u-search-input" placeholder="搜索" />
+          </form>
+        </div>
+      
+
+			<ul class='switcher h-list'>
+				
+					<li><a class="s-search flat-btn fas fa-search fa-fw" target="_self" href='javascript:void(0)'></a></li>
+				
+				<li><a class="s-menu flat-btn fas fa-bars fa-fw" target="_self" href='javascript:void(0)'></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+<ul class="menu-phone navigation white-box">
+  
+  
+    <li>
+      <a class="flat-box" href=/
+        
+        
+        
+          id="home"
+        >
+        
+          <i class='fas fa-clock fa-fw fa-fw'></i>
+        
+        近期文章
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/archives/
+        
+        
+        
+          id="archives"
+        >
+        
+          <i class='fas fa-list-alt fa-fw fa-fw'></i>
+        
+        文章归档
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/categories/
+        
+        
+        
+          id="categories"
+        >
+        
+          <i class='fas fa-folder-open fa-fw'></i>
+        
+        文章类别
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/tags/
+        
+        
+        
+          id="tags"
+        >
+        
+          <i class='fas fa-tags fa-fw'></i>
+        
+        文章标签
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/friends/
+        
+        
+        
+          id="friends"
+        >
+        
+          <i class='fas fa-link fa-fw'></i>
+        
+        我的友链
+      </a>
+    </li>
+  
+    <li>
+      <a class="flat-box" href=/about/
+        
+        
+        
+          id="about"
+        >
+        
+          <i class='fas fa-info-circle fa-fw'></i>
+        
+        关于小站
+      </a>
+    </li>
+  
+</ul>
+<script>setLoadingBarProgress(40);</script>
+
+
+
+  <div class="l_body nocover">
+    <div class='body-wrapper'>
+      
+
+<div class='l_main'>
+  
+
+  
+    <article id="post" class="post white-box shadow floatable article-type-post" itemscope itemprop="blogPost">
+      
+
+
+  <section class='meta'>
+    
+    
+    <div class="meta" id="header-meta">
+      
+        
+  
+    <h1 class="title">
+      <a href="/2020/04/09/%E5%AF%B9%E5%B0%8F%E6%9C%A8%E8%99%AB%E8%80%83%E7%A0%94%E8%B0%83%E5%89%82%E4%BF%A1%E6%81%AF%E7%9A%84%E7%88%AC%E5%8F%96/">
+        对小木虫考研调剂信息的爬取
+      </a>
+    </h1>
+  
+
+
+      
+      <div class='new-meta-box'>
+        
+          
+        
+          
+            
+<div class='new-meta-item author'>
+  <a href="https://liizhi.cn" target="_blank" rel="nofollow noopener">
+    <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
+    <p>Chemlez</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+  
+  <div class='new-meta-item category'>
+    <a href='/categories/Python/%E7%88%AC%E8%99%AB/' rel="nofollow">
+      <i class="fas fa-folder-open" aria-hidden="true"></i>
+      <p>Python&nbsp;/&nbsp;爬虫</p>
+    </a>
+  </div>
+
+
+          
+        
+          
+            <div class="new-meta-item date">
+  <a class='notlink'>
+    <i class="fas fa-edit" aria-hidden="true"></i>
+    <p>发布于：Apr 9, 2020</p>
+  </a>
+</div>
+
+          
+        
+          
+            
+
+          
+        
+      </div>
+      
+        <hr>
+      
+    </div>
+  </section>
+
+
+      <section class="article typo">
+        <div class="article-entry" itemprop="articleBody">
+          
+          <h3 id="一、说明"><a href="#一、说明" class="headerlink" title="一、说明"></a>一、说明</h3><p><strong>由于国家线快出了，故写了一份爬取小木虫网站调剂信息的爬虫代码，方便信息查看。此代码仅用于学习，不作为任何商业用途。</strong></p>
+<a id="more"></a>
+
+<h3 id="二、代码"><a href="#二、代码" class="headerlink" title="二、代码"></a>二、代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!~/opt/anaconda3/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取网页</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHTMLText</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url, timeout=<span class="number">30</span>)</span><br><span class="line">        r.raise_for_status()</span><br><span class="line">        r.encoding = r.apparent_encoding</span><br><span class="line">        <span class="keyword">return</span> r.text</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getDataInfo</span><span class="params">(infoList, url, pre_params, *args)</span>:</span></span><br><span class="line">    params = []</span><br><span class="line">    count = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> args:</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        par_ = pre_params[count] + i</span><br><span class="line">        params.append(par_)</span><br><span class="line">	</span><br><span class="line">    <span class="comment"># 根据参数获取访问链接</span></span><br><span class="line">    <span class="keyword">for</span> param <span class="keyword">in</span> params:</span><br><span class="line">        url += param + <span class="string">'&amp;'</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># print(url)</span></span><br><span class="line">    html = getHTMLText(url)</span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">'html.parser'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获取页码数，并处理空页异常</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        pages_tag = soup.find_all(<span class="string">'td'</span>, <span class="string">'header'</span>)[<span class="number">1</span>].string</span><br><span class="line">        pages = int(re.split(<span class="string">'/'</span>, pages_tag)[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        pages = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 判读是否只有一页</span></span><br><span class="line">    <span class="keyword">if</span> pages == <span class="number">0</span>:</span><br><span class="line">        pages += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(pages):  <span class="comment"># 遍历每一页</span></span><br><span class="line">        page = i + <span class="number">1</span></span><br><span class="line">        url = url + <span class="string">'&amp;page='</span> + str(page)</span><br><span class="line">        html = getHTMLText(url)</span><br><span class="line">        soup = BeautifulSoup(html, <span class="string">'html.parser'</span>)</span><br><span class="line">        tbody = soup.find_all(<span class="string">'tbody'</span>, <span class="string">'forum_body_manage'</span>)[<span class="number">0</span>]</span><br><span class="line">        trs = tbody.find_all(<span class="string">'tr'</span>)  <span class="comment"># 每个学校的全部信息被tr标签包围</span></span><br><span class="line">        <span class="keyword">for</span> tr <span class="keyword">in</span> trs:  <span class="comment"># 遍历每一个学校</span></span><br><span class="line">            dicts = &#123;&#125;</span><br><span class="line">            href = tr.find_all(<span class="string">'a'</span>)[<span class="number">0</span>].get(<span class="string">'href'</span>)  <span class="comment"># 定位至a标签，提取href的属性值</span></span><br><span class="line">            tds = tr.find_all(<span class="string">'td'</span>)  <span class="comment"># 每个学校的各个信息包含在td标签内</span></span><br><span class="line">            lens = len(tds)</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(lens): <span class="comment"># 将各个学校信息添加至字典中</span></span><br><span class="line">                <span class="keyword">if</span> i == <span class="number">0</span>:</span><br><span class="line">                    title = tds[i].find(<span class="string">'a'</span>).string</span><br><span class="line">                    dicts[i] = title</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dicts[i] = tds[i].string</span><br><span class="line">            dicts[<span class="string">'href'</span>] = href</span><br><span class="line">            print(dicts)</span><br><span class="line">            infoList.append(dicts) <span class="comment"># 每一个学校的信息，添加至列表</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">outputCSV</span><span class="params">(infoList, path)</span>:</span></span><br><span class="line">    data = pd.DataFrame(infoList)</span><br><span class="line">    <span class="comment"># with open(r'./info.csv','w+',encoding='utf-8') as f:</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line"></span><br><span class="line">        data.columns = [<span class="string">'标题'</span>, <span class="string">'学校'</span>, <span class="string">'门类/专业'</span>, <span class="string">'招生人数'</span>, <span class="string">'发布时间'</span>, <span class="string">'链接'</span>]</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">'没有调剂信息...'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> os.path.exists(path):</span><br><span class="line">            data.to_csv(path)</span><br><span class="line">            print(<span class="string">'保存成功'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'路径存在'</span>)</span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        print(<span class="string">'保存失败'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 设定查询参数 -- 专业、年份</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parameters</span><span class="params">(pro_=<span class="string">''</span>, pro_1=<span class="string">''</span>, pro_2=<span class="string">''</span>, year=<span class="string">''</span>)</span>:</span></span><br><span class="line">    paramsList = [pro_, pro_1, pro_2, year]</span><br><span class="line">    <span class="keyword">return</span> paramsList</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    url = <span class="string">'http://muchong.com/bbs/kaoyan.php?'</span></span><br><span class="line">    path = <span class="string">'./2020计算机调剂信息(截止4.09).csv'</span></span><br><span class="line">    pre_params = [<span class="string">'r1%5B%5D='</span>, <span class="string">'r2%5B%5D='</span>, <span class="string">'r3%5B%5D='</span>, <span class="string">'year='</span>]</span><br><span class="line">    params = parameters(pro_=<span class="string">'08'</span>, pro_1=<span class="string">'0812'</span>,year=<span class="string">'2020'</span>)</span><br><span class="line">    dataList = []</span><br><span class="line">    getDataInfo(dataList, url, pre_params, *params)</span><br><span class="line">    outputCSV(dataList, path)</span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、代码使用参数说明"><a href="#三、代码使用参数说明" class="headerlink" title="三、代码使用参数说明"></a>三、代码使用参数说明</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parameters</span><span class="params">(pro_=<span class="string">''</span>, pro_1=<span class="string">''</span>, pro_2=<span class="string">''</span>, year=<span class="string">''</span>)</span>:</span></span><br><span class="line">    paramsList = [pro_, pro_1, pro_2, year]</span><br><span class="line">    <span class="keyword">return</span> paramsList</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    url = <span class="string">'http://muchong.com/bbs/kaoyan.php?'</span></span><br><span class="line">    path = <span class="string">'./data_info.csv'</span></span><br><span class="line">    pre_params = [<span class="string">'r1%5B%5D='</span>, <span class="string">'r2%5B%5D='</span>, <span class="string">'r3%5B%5D='</span>, <span class="string">'year='</span>]</span><br><span class="line">    params = parameters(pro_=<span class="string">'08'</span>, pro_1=<span class="string">'0801'</span>)</span><br><span class="line">    dataList = []</span><br><span class="line">    getDataInfo(dataList, url, pre_params, *params)</span><br><span class="line">    outputCSV(dataList, path)</span><br></pre></td></tr></table></figure>
+
+<p>主体代码已写完，只需要修改main函数中<code>params</code>中的相关参数，即可使用。</p>
+<p><code>parameters</code>函数主要用于返回查询的参数。默认参数都为空。如果都不填，则是爬取小木虫全部年份，全部专业的所有调剂信息。</p>
+<p><code>params</code>具体参数说明：</p>
+<ul>
+<li><p><code>pro_</code></p>
+<p>所要查询的学科门类。可查询的见下图:</p>
+<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/04/09/Ghfaa6.png" style="zoom:60%;" />
+
+<p>只要查询填写对应学科门类前的数字即可。例如工学，则:<code>pro_=&#39;08&#39;</code></p>
+<p><strong>注意:填写的为字符串格式</strong></p>
+</li>
+<li><p><code>pro_1</code></p>
+<p>填写的一级学科代码。如下图：</p>
+<img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/04/09/GhfBGD.png" style="zoom:40%;" />
+
+<p>以电子科学与技术为例，同样只需要填写前面代码即可。如：<code>pro_2=&#39;0806&#39;</code></p>
+<p>如果这一项不填，则查询的是前一个填写的整个学科门类所有信息。</p>
+</li>
+<li><p><code>pro_2</code></p>
+<p>填写的二级学科代码。如图:</p>
+<p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/04/09/GhfdIK.png" alt=""></p>
+<p>例如查询物理电子学调剂信息，同上。则填:<code>pro_2=&#39;080901&#39;</code>。如果不填，则默认查询的是上一级学科下的所有调剂信息。例如，这里就是全部的电子科学与技术的调剂信息。</p>
+</li>
+<li><p><code>year</code></p>
+<p>查询年份。例如查询2020年。<code>year=&#39;2020&#39;</code>。<strong>注意:同样是字符串类型</strong>。如果不填，则是查询全部的年份。</p>
+<p>其中，<code>main()</code>函数中的保存路径<code>path</code>,可自定义修改。</p>
+</li>
+</ul>
+<p><strong>总结:</strong>只需修改<code>params</code>和保存路径<code>url</code>即可。</p>
+<h3 id="四、效果图"><a href="#四、效果图" class="headerlink" title="四、效果图"></a>四、效果图</h3><p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/04/09/GhfDRe.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/04/09/Ghf0PO.png" alt=""></p>
+<h3 id="附"><a href="#附" class="headerlink" title="附"></a>附</h3><p>小木虫调剂信息网站:<a href="http://muchong.com/bbs/kaoyan.php" target="_blank" rel="noopener">http://muchong.com/bbs/kaoyan.php</a></p>
+
+
+<btns rounded grid5>
+
+<a href='https://github.com/ChemLez/xmcTiaoJiInformation_Pachong' target="_blank" rel="noopener"><i class='fas fa-download'></i>下载源码</a>
+</a>
+
+</btns>
+
+
+          
+            <br>
+            
+  
+    
+    
+
+<section class="widget copyright  desktop mobile">
+  <div class='content'>
+    
+      <blockquote>
+        
+          
+            <p>博客内容遵循 署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0) 协议</p>
+
+          
+        
+          
+            <p>本文永久链接是：<a href=https://www.liizhi.cn/2020/04/09/%E5%AF%B9%E5%B0%8F%E6%9C%A8%E8%99%AB%E8%80%83%E7%A0%94%E8%B0%83%E5%89%82%E4%BF%A1%E6%81%AF%E7%9A%84%E7%88%AC%E5%8F%96/>https://www.liizhi.cn/2020/04/09/%E5%AF%B9%E5%B0%8F%E6%9C%A8%E8%99%AB%E8%80%83%E7%A0%94%E8%B0%83%E5%89%82%E4%BF%A1%E6%81%AF%E7%9A%84%E7%88%AC%E5%8F%96/</a></p>
+          
+        
+      </blockquote>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget related_posts  desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-bookmark fa-fw" aria-hidden="true"></i><span class='name'>相关文章</span>
+    
+  </header>
+
+
+    <div class="content">
+      <ul class="popular-posts"><li class="popular-posts-item"><div class="popular-posts-title"><h3><a href="/2020/03/18/Python爬虫基础入门/" title="Python爬虫基础入门" rel="bookmark">Python爬虫基础入门</a></h3></div></li></ul>
+    </div>
+  </section>
+
+
+  
+
+
+          
+        </div>
+        
+          
+
+
+  <section class='meta' id="footer-meta">
+    <div class='new-meta-box'>
+      
+        
+          <div class="new-meta-item date" itemprop="dateUpdated" datetime="2020-04-09T20:25:56+08:00">
+  <a class='notlink'>
+    <i class="fas fa-save" aria-hidden="true"></i>
+    <p>更新于：Apr 9, 2020</p>
+  </a>
+</div>
+
+        
+      
+        
+          
+  
+  <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E7%88%AC%E8%99%AB/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>爬虫</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>正则表达式</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Request/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>Request</p></a></div> <div class="new-meta-item meta-tags"><a class="tag" href="/tags/Beautifulsoup/" rel="nofollow"><i class="fas fa-hashtag" aria-hidden="true"></i><p>Beautifulsoup</p></a></div>
+
+
+        
+      
+        
+          
+  <div class="new-meta-item share -mob-share-list">
+  <div class="-mob-share-list share-body">
+    
+      
+        <a class="-mob-share-qq" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://connect.qq.com/widget/shareqq/index.html?url=https://www.liizhi.cn/2020/04/09/%E5%AF%B9%E5%B0%8F%E6%9C%A8%E8%99%AB%E8%80%83%E7%A0%94%E8%B0%83%E5%89%82%E4%BF%A1%E6%81%AF%E7%9A%84%E7%88%AC%E5%8F%96/&title=对小木虫考研调剂信息的爬取 - Liz'blog&summary=一、说明由于国家线快出了，故写了一份爬取小木虫网站调剂信息的爬虫代码，方便信息查看。此代码仅用于学习，不作为任何商业用途。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qq.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-qzone" title="" rel="external nofollow noopener noreferrer"
+          
+          href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.liizhi.cn/2020/04/09/%E5%AF%B9%E5%B0%8F%E6%9C%A8%E8%99%AB%E8%80%83%E7%A0%94%E8%B0%83%E5%89%82%E4%BF%A1%E6%81%AF%E7%9A%84%E7%88%AC%E5%8F%96/&title=对小木虫考研调剂信息的爬取 - Liz'blog&summary=一、说明由于国家线快出了，故写了一份爬取小木虫网站调剂信息的爬虫代码，方便信息查看。此代码仅用于学习，不作为任何商业用途。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/qzone.png">
+          
+        </a>
+      
+    
+      
+        <a class="-mob-share-weibo" title="" rel="external nofollow noopener noreferrer"
+          
+          href="http://service.weibo.com/share/share.php?url=https://www.liizhi.cn/2020/04/09/%E5%AF%B9%E5%B0%8F%E6%9C%A8%E8%99%AB%E8%80%83%E7%A0%94%E8%B0%83%E5%89%82%E4%BF%A1%E6%81%AF%E7%9A%84%E7%88%AC%E5%8F%96/&title=对小木虫考研调剂信息的爬取 - Liz'blog&summary=一、说明由于国家线快出了，故写了一份爬取小木虫网站调剂信息的爬虫代码，方便信息查看。此代码仅用于学习，不作为任何商业用途。"
+          
+          >
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/weibo.png">
+          
+        </a>
+      
+    
+      
+        
+        <div class='hoverbox'>
+          <a><img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/logo/128/wechat.png"></a>
+          <div class='target'>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbgAAAG4CAAAAAASoa1vAAAG20lEQVR42u3aQXLcMAwEQP//08ndqS0RM5BStpq3jXdFEs0chtDXH+NHji8lAGeAM8CBM8AZ4F4P9xWOfx747d+vfvdVjtN523VePff091v1BgcOHDhw4MCBAwcOHLiriaYbv/r+aSFO50/XuXUw2gM+3gc4cODAgQMHDhw4cODAhcG5LdhpQD09AGnwPwWZHqTt9YIDBw4cOHDgwIEDBw7cNtzdAXx6gKYHow3Kp+sEBw4cOHDgwIEDBw4cuP8Nt12IaUNyqzGaPrcN7ODAgQMHDhw4cODAgQPXwk0DZhtYpyDpgUkPxOl8dwV7cODAgQMHDhw4cODAgfsEd3eg9Xmp3uDA+QwOHDhw4MD5DO71cFtj2lBMG4xXhdm6MLh7/rjO4MCBAwcOHDhw4MCBez1cGyhbuLteKJ02RNsLhiloerDAgQMHDhw4cODAgQMHLl1YGlTv+v7pwTjdVxugpwf++DngwIEDBw4cOHDgwIF7PVwaQNOCbwf27YI9vb/xgQYHDhw4cODAgQMHDtzr4bYD+LQw0w2kjcstwMcapk83UsGBAwcOHDhw4MCBA/dj4LYC7lZj8vQgbRd+++8p6GV9wIEDBw4cOHDgwIEDB24YjKdBffv3aTBvD8T2gTsddQccHDhw4MCBAwcOHDhwvw6u3fBpkN8KpNsBuoWZXgBMLz7AgQMHDhw4cODAgQMH7hPcn3CkhdluNKYN3LQxmh7I+j8EOHDgwIEDBw4cOHDgXg/XbiD9ftuw3CpsO98Uom4AgwMHDhw4cODAgQMHDtxS4J3CP7bRpfm2Gr7pxQY4cODAgQMHDhw4cODAbTVMpwG2Dbpp43W74ZnuJz2Q4MCBAwcOHDhw4MCBA3fXhqcB97SxOd5gCDVdZ1qf+N/BgQMHDhw4cODAgQP3erjtgqfBc/s5W4G6nXfa0L1cLzhw4MCBAwcOHDhw4F4P1wbcrWB82pjcbrymI20ot41qcODAgQMHDhw4cODAgZs2IJ8Ovu2BShu+aWP0dJ70oIMDBw4cOHDgwIEDBw7ctICnf58G49ONpPPXwTcM+lsXDuDAgQMHDhw4cODAgQOXNgq3GqinhWkPyBZIu8+0buDAgQMHDhw4cODAgQN31UhNg2IaeNMGaB1ky4uHuxqul3UCBw4cOHDgwIEDBw4cuIcD5+lz2obn1kVAenBuWx84cODAgQMHDhw4cODAhcH3toA5DL7t+rZhpvuYBnxw4MCBAwcOHDhw4MCBmwbd9gXS9MDc/ULsViN5e10fAzg4cODAgQMHDhw4cOBeC5c+uA2ubZDeatC287frHe8PHDhw4MCBAwcOHDhw4IYB8zRQTwuWBt0WqG3ojgN0G8zBgQMHDhw4cODAgQMHbmnhaWBtA3N7YZA2WtODfLq/j/sGBw4cOHDgwIEDBw7c6+GmG5oueAp113PTC4bTz+nFw7g+4MCBAwcOHDhw4MCBAxcuIN1Q+tz0IiD9Xnsw2gN/2UgFBw4cOHDgwIEDBw7ca+GOf3D479PnpPO0cOn62guF+jM4cODAgQMHDhw4cODALYNNG6JtIJ6ut23QTn83PdCX+wYHDhw4cODAgQMHDhy4YQGnjcFpQ3NaqPZAbR/AtKF7fADBgQMHDhw4cODAgQMHLoRIJ55uZDtoTw9Sur+2nnUjFRw4cODAgQMHDhw4cL8eri1kGtinjdS08Zo2OtOLgq06ggMHDhw4cODAgQMHDtx3uDZgplBtgL+7kXu6/rsarR/XDQ4cOHDgwIEDBw4cOHBhQdoG5vY808C7Vfg2UI8PDjhw4MCBAwcOHDhw4MCFBW4bidNG51ZjdAqefn96AbHWSAUHDhw4cODAgQMHDtyvh5sGyzQYpw3GdN62UTtucIbrAAcOHDhw4MCBAwcOHLg2gKcP3gqgaTBtn9MG6vZC4fg54MCBAwcOHDhw4MCBA7cUKKcN1K1G7Fc4tgqavjAbvxAMDhw4cODAgQMHDhw4cDc1ENvCpAcinT997t0XBeDAgQMHDhw4cODAgQP3Ha4NsMcTDgvXXgg8BXP3xQQ4cODAgQMHDhw4cODAfYLbCtzbhT89YHeBPx2wL+cDBw4cOHDgwIEDBw4cuMMXOLeDdTtve4HQPu80aG+/qAsOHDhw4MCBAwcOHDhw2wWcNhanBUiD9nSf7QVDCgMOHDhw4MCBAwcOHDhwTwXw9nst7HajdPsCYrr+xxqp4MCBAwcOHDhw4MCB+/Fw6Qug06DcbiRtkN69jq0D8PF54MCBAwcOHDhw4MCBAxeONhi3wTtt4J7+vQ3QU/i4kQoOHDhw4MCBAwcOHLjXwRk/a4ADZ4AzwIEzwBngXjv+AkLOxTHOlTDKAAAAAElFTkSuQmCC">
+          </div>
+        </div>
+      
+    
+  </div>
+</div>
+
+
+
+        
+      
+    </div>
+  </section>
+
+
+        
+        
+          <div class="prev-next">
+            
+            
+              <a class='next' href='/2020/04/05/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%89%B9%E5%BE%81%E5%B7%A5%E7%A8%8B%E4%B9%8B%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/'>
+                <p class='title'>机器学习:特征工程之数据预处理<i class="fas fa-chevron-right" aria-hidden="true"></i></p>
+                <p class='content'>在上一节中的泰坦尼克号入门案例的数据预处理过程中，出现了数据不完整、数据的编码(数值转化)，即将非结构化文本转化为结构化文本。本文主要用来记录在sklearn中常用的数据预处理基本方法。
+数据预...</p>
+              </a>
+            
+          </div>
+        
+      </section>
+    </article>
+  
+
+  
+    <!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments shadow floatable">
+    <section class="article typo">
+      <p ct><i class='fas fa-comments'></i> Comment</p>
+      
+      
+      
+      
+      
+        <section id="comments">
+          <div id="valine_container" class="valine_thread">
+            <i class="fas fa-spinner fa-spin fa-fw"></i>
+          </div>
+        </section>
+      
+    </section>
+  </article>
+
+
+  
+
+
+
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+
+  <script>
+    window.subData = {
+      title: '对小木虫考研调剂信息的爬取',
+      tools: true
+    }
+  </script>
+
+
+</div>
+<aside class='l_side'>
+  
+  
+    
+    
+
+<section class="widget blogger shadow floatable desktop">
+  <div class='content'>
+    
+      <div class='avatar'>
+        <img class='avatar' src='https://s1.ax1x.com/2020/03/13/8mvbCj.jpg'/>
+      </div>
+    
+    
+      <div class='text'>
+        
+        
+        
+          <p><span id="jinrishici-sentence">Liz'blog</span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        
+      </div>
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="https://github.com/Chemlez"
+              class="social fab fa-github flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="https://weibo.com/u/5653780011?nick=Sane_z&is_all=1"
+              class="social fab fa-weibo flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+          
+            <a href="mailto:liizhi_1106@163.com"
+              class="social fas fa-envelope flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+            </a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget category shadow floatable desktop">
+    
+  <header>
+    
+      <a href='/categories/'><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i><span class='name'>文章分类</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <ul class="entry navigation">
+        
+          <li><a class="flat-box"
+            title="/categories/Java/" href="/categories/Java/"
+            id="categoriesJava"
+            ><div class='name'>Java</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Linux/" href="/categories/Linux/"
+            id="categoriesLinux"
+            ><div class='name'>Linux</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Machine-Learning/" href="/categories/Machine-Learning/"
+            id="categoriesMachine-Learning"
+            ><div class='name'>Machine Learning</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Machine-Learning/sklearn/" href="/categories/Machine-Learning/sklearn/"
+            id="categoriesMachine-Learningsklearn"
+            ><div class='name'>sklearn</div><div class='badge'>(2)</div></a></li>
+        
+          <li><a class="flat-box"
+            title="/categories/Python/" href="/categories/Python/"
+            id="categoriesPython"
+            ><div class='name'>Python</div><div class='badge'>(3)</div></a></li>
+        
+          <li><a class="flat-box child"
+            title="/categories/Python/%E7%88%AC%E8%99%AB/" href="/categories/Python/%E7%88%AC%E8%99%AB/"
+            id="categoriesPythonE788ACE899AB"
+            ><div class='name'>爬虫</div><div class='badge'>(2)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+  
+
+  <section class="widget tagcloud shadow floatable desktop">
+    
+  <header>
+    
+      <a href='/tags/'><i class="fas fa-tags fa-fw" aria-hidden="true"></i><span class='name'>热门标签</span></a>
+    
+  </header>
+
+
+    <div class='content'>
+      <a href="/tags/Beautifulsoup/" style="font-size: 19px; color: #777">Beautifulsoup</a> <a href="/tags/Data-Preprocessing/" style="font-size: 14px; color: #999">Data Preprocessing</a> <a href="/tags/DecisionTree/" style="font-size: 14px; color: #999">DecisionTree</a> <a href="/tags/Feature-Engineering/" style="font-size: 14px; color: #999">Feature Engineering</a> <a href="/tags/JDBC/" style="font-size: 19px; color: #777">JDBC</a> <a href="/tags/Java/" style="font-size: 19px; color: #777">Java</a> <a href="/tags/Kaggle/" style="font-size: 14px; color: #999">Kaggle</a> <a href="/tags/Linux/" style="font-size: 19px; color: #777">Linux</a> <a href="/tags/MySQL/" style="font-size: 24px; color: #555">MySQL</a> <a href="/tags/Python/" style="font-size: 14px; color: #999">Python</a> <a href="/tags/Request/" style="font-size: 19px; color: #777">Request</a> <a href="/tags/VMware/" style="font-size: 14px; color: #999">VMware</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/sklearn/" style="font-size: 19px; color: #777">sklearn</a> <a href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" style="font-size: 19px; color: #777">正则表达式</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 19px; color: #777">爬虫</a>
+    </div>
+  </section>
+
+
+  
+
+  
+    
+    
+
+
+  <section class="widget toc-wrapper shadow floatable desktop mobile">
+    
+  <header>
+    
+      <i class="fas fa-list fa-fw" aria-hidden="true"></i><span class='name'>本文目录</span>
+    
+  </header>
+
+
+    <div class='content'>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、说明"><span class="toc-text">一、说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、代码"><span class="toc-text">二、代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、代码使用参数说明"><span class="toc-text">三、代码使用参数说明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、效果图"><span class="toc-text">四、效果图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#附"><span class="toc-text">附</span></a></li></ol>
+    </div>
+  </section>
+
+
+  
+
+
+</aside>
+
+
+  
+  <footer class="clearfix">
+    <br><br>
+    
+      
+        <div class="aplayer-container">
+          
+
+
+        </div>
+      
+    
+      
+        <br>
+        <div class="social-wrapper">
+          
+            
+              <a href="https://github.com/Chemlez"
+                class="social fab fa-github flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="https://weibo.com/u/5653780011?nick=Sane_z&amp;is_all=1"
+                class="social fab fa-weibo flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+            
+              <a href="mailto:liizhi_1106@163.com"
+                class="social fas fa-envelope flat-btn"
+                target="_blank"
+                rel="external nofollow noopener noreferrer">
+              </a>
+            
+          
+        </div>
+      
+    
+      
+        <div class='copyright'>
+        <p><a href="https://liizhi.cn" target="_blank" rel="noopener">Copyright © 2019-2020 Chemlez</a></p>
+
+        </div>
+      
+    
+  </footer>
+
+<script>setLoadingBarProgress(80);</script>
+
+
+      <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+  </div>
+  
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4/dist/jquery.min.js"></script>
+
+
+  <script>
+    
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/" || "/";
+    if (!ROOT.endsWith('/')) ROOT += '/';
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/instant_page.js" type="module" defer integrity="sha384-OeDn4XE77tdHo8pGtE1apMPmAipjoxUQ++eeJa6EtJCfHlvijigWiJpD7VDPWXV1"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+
+  <script type="text/javascript">
+    $(function() {
+      Waves.attach('.flat-btn', ['waves-button']);
+      Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+      Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+      Waves.attach('.flat-box', ['waves-block']);
+      Waves.attach('.float-box', ['waves-block', 'waves-float']);
+      Waves.attach('.waves-image');
+      Waves.init();
+    });
+  </script>
+
+
+  <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+
+
+
+  
+  
+  
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery-backstretch@2.1.18/jquery.backstretch.min.js"></script>
+
+    <script type="text/javascript">
+      $(function(){
+        var imgs=["https://cdn.jsdelivr.net/gh/xaoxuu/cdn-wallpaper/abstract/41F215B9-261F-48B4-80B5-4E86E165259E.jpeg"];
+        if ('true' == 'true') {
+          function shuffle(arr){
+            /*From countercurrent-time*/
+            var n = arr.length;
+            while(n--) {
+              var index = Math.floor(Math.random() * n);
+              var temp = arr[index];
+              arr[index] = arr[n];
+              arr[n] = temp;
+            }
+          }
+          shuffle(imgs);
+        }
+        if ('.cover') {
+          $('.cover').backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        } else {
+          $.backstretch(
+            imgs,
+          {
+            duration: "20000",
+            fade: "1500"
+          });
+        }
+      });
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+    
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.0/js/valine.js"></script>
+
+  
+  <script>
+  var GUEST_INFO = ['nick','mail','link'];
+  var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+    return GUEST_INFO.indexOf(item) > -1
+  });
+  var notify = 'true' == true;
+  var verify = 'true' == true;
+  var valine = new Valine();
+  valine.init({
+    el: '#valine_container',
+    notify: notify,
+    verify: verify,
+    guest_info: guest_info,
+    
+    appId: "YSitK1ig1lRcy3jvrtTzT6fb-MdYXbMMI",
+    appKey: "e7hFf2zqvyWgNmDsClWcM7W3",
+    placeholder: "快来评论吧~",
+    pageSize:'10',
+    avatar:'wavatar',
+    lang:'zh-cn',
+    visitor: 'false',
+    highlight:'true'
+  })
+  </script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1.5/js/app.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2.1/js/search.js"></script>
+
+
+
+  
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-volantis@2/js/comment_typing.js"></script>
+
+
+
+<!-- 复制 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="fas fa-copy"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copyed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-clipboard-check');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPYED';
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('fa-copy');
+        $icon.addClass('fa-exclamation-triangle');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+
+<!-- fancybox -->
+
+  <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+<script>
+  let LAZY_LOAD_IMAGE = "[object Object]";
+  $(".article-entry").find("fancybox").find("img").each(function () {
+      var element = document.createElement("a");
+      $(element).attr("data-fancybox", "gallery");
+      $(element).attr("href", $(this).attr("src"));
+      /* 图片采用懒加载处理时,
+       * 一般图片标签内会有个属性名来存放图片的真实地址，比如 data-original,
+       * 那么此处将原本的属性名src替换为对应属性名data-original,
+       * 修改如下
+       */
+       if (LAZY_LOAD_IMAGE) {
+         $(element).attr("href", $(this).attr("data-original"));
+       }
+      $(this).wrap(element);
+  });
+</script>
+
+
+
+
+
+
+  <script>setLoadingBarProgress(100);</script>
+<script>!function(e){var c=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function i(){for(var r=0;r<c.length;r++)t=c[r],0<=(n=t.getBoundingClientRect()).bottom&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=c[r];t=o,n=function(){c=c.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}i(),e.addEventListener("scroll",function(){var t,n;t=i,n=e,clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)})}(this);</script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(e.href.match(t)||e.href.match(r))&&(e.href=a.dataset.original)})});</script></body>
+</html>

@@ -5,7 +5,9 @@
   <!-- SEO相关 -->
   
     
-      <meta name="robots" content="noindex,follow">
+      
+        <meta name="robots" content="noindex,follow">
+      
     
   
   <!-- 渲染优化 -->
@@ -18,7 +20,7 @@
 
   <!-- 页面元数据 -->
   
-    <title>Tag: Beautifulsoup - Liz&#39;blog</title>
+    <title>Liz&#39;blog</title>
   
   
 
@@ -353,21 +355,10 @@
     <div class='body-wrapper'>
       
 
-
 <div class='l_main'>
   
-    
-      
   <section class="post-list ">
     
-      
-        
-          
-        
-          
-        
-      
-    
     
       
         
@@ -383,8 +374,8 @@
       
         
   <h2 class="title">
-    <a href="/2020/04/09/%E5%AF%B9%E5%B0%8F%E6%9C%A8%E8%99%AB%E8%80%83%E7%A0%94%E8%B0%83%E5%89%82%E4%BF%A1%E6%81%AF%E7%9A%84%E7%88%AC%E5%8F%96/">
-      对小木虫考研调剂信息的爬取
+    <a href="/2019/08/28/hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/">
+      Hexo yilia 主题添加相册功能
     </a>
   </h2>
 
@@ -407,14 +398,6 @@
         
           
             
-  
-  <div class='new-meta-item category'>
-    <a href='/categories/Python/%E7%88%AC%E8%99%AB/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Python&nbsp;/&nbsp;爬虫</p>
-    </a>
-  </div>
-
 
           
         
@@ -422,7 +405,7 @@
             <div class="new-meta-item date">
   <a class='notlink'>
     <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：Apr 9, 2020</p>
+    <p>发布于：Aug 28, 2019</p>
   </a>
 </div>
 
@@ -433,13 +416,13 @@
   <div class="new-meta-item wordcount">
     <a class='notlink'>
       <i class="fas fa-keyboard" aria-hidden="true"></i>
-      <p>1.5k words</p>
+      <p>2.1k words</p>
     </a>
   </div>
   <div class="new-meta-item readtime">
     <a class='notlink'>
       <i class="fas fa-hourglass-half" aria-hidden="true"></i>
-      <p>7 min</p>
+      <p>8 min</p>
     </a>
   </div>
 
@@ -461,11 +444,14 @@
 
   <section class="article typo">
     <div class="article-entry" itemprop="articleBody">
-      <h3 id="一、说明"><a href="#一、说明" class="headerlink" title="一、说明"></a>一、说明</h3><p><strong>由于国家线快出了，故写了一份爬取小木虫网站调剂信息的爬虫代码，方便信息查看。此代码仅用于学习，不作为任何商业用途。</strong></p>
+      <p>当我们使用hexo博客框架中的yilia主题时，在我们这一博客页面中，原作者Litten并未帮我们添加相册这一功能。这时，如果想让我们的博客拥有相册的功能，就需要我们自行添加改变、添加主题中的相关参数。从网上百度了很多，看了许多的博客，还是遇到了一些坑爬不过去。最终，还是请教了一个小伙伴才得以解决。</p>
+<h2 id="一、博客页面添加相册"><a href="#一、博客页面添加相册" class="headerlink" title="一、博客页面添加相册"></a>一、博客页面添加相册</h2><p>首先，打开cmd进入blog的source目录下，创建photos文件夹。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">E:\&gt;cd blog</span><br><span class="line">E:\blog&gt;cd source</span><br><span class="line">E:\blog\source&gt;hexo new page &quot;photos&quot;</span><br><span class="line">INFO  Created: E:\blog\source\photos\index.md</span><br></pre></td></tr></table></figure>
+<p>删除文件夹中的index.md文件，否则最终生成的是一个单纯的页面。也可以直接进入source文件下创建photos文件夹。</p>
       
         
           <div class="button readmore">
-            <a href="/2020/04/09/%E5%AF%B9%E5%B0%8F%E6%9C%A8%E8%99%AB%E8%80%83%E7%A0%94%E8%B0%83%E5%89%82%E4%BF%A1%E6%81%AF%E7%9A%84%E7%88%AC%E5%8F%96/">
+            <a href="/2019/08/28/hexo-yilia-%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E7%9B%B8%E5%86%8C%E5%8A%9F%E8%83%BD/">
               Read More <i class="fas fa-chevron-right"></i>
             </a>
           </div>
@@ -478,163 +464,24 @@
           </div>
         
       
-        
-          <div class='post-wrapper'>
-            <article class="post white-box shadow floatable reveal ">
-  
-
-
-  <section class='meta'>
     
-    
-    <div class="meta" id="header-meta">
-      
-        
-  <h2 class="title">
-    <a href="/2020/03/18/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">
-      Python爬虫基础入门
-    </a>
-  </h2>
-
-
-      
-      <div class='new-meta-box'>
-        
-          
-        
-          
-            
-<div class='new-meta-item author'>
-  <a href="https://liizhi.cn" target="_blank" rel="nofollow noopener">
-    <img src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/placeholder/d570170f4f12e1ee829ca0e85a7dffeb77343a.svg" data-original="https://s1.ax1x.com/2020/03/13/8mvbCj.jpg">
-    <p>Chemlez</p>
-  </a>
-</div>
-
-          
-        
-          
-            
+  </section>
   
-  <div class='new-meta-item category'>
-    <a href='/categories/Python/%E7%88%AC%E8%99%AB/' rel="nofollow">
-      <i class="fas fa-folder-open" aria-hidden="true"></i>
-      <p>Python&nbsp;/&nbsp;爬虫</p>
-    </a>
-  </div>
-
-
-          
+    
+      <br>
+      <div class="prev-next">
         
-          
-            <div class="new-meta-item date">
-  <a class='notlink'>
-    <i class="fas fa-edit" aria-hidden="true"></i>
-    <p>发布于：Mar 18, 2020</p>
-  </a>
-</div>
-
-          
+          <a class="prev" rel="prev" href="/">
+            <section class="post prev white-box shadow floatable" >
+              <i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous&nbsp;
+            </section>
+          </a>
         
-          
-            
-  <div class="new-meta-item wordcount">
-    <a class='notlink'>
-      <i class="fas fa-keyboard" aria-hidden="true"></i>
-      <p>5.8k words</p>
-    </a>
-  </div>
-  <div class="new-meta-item readtime">
-    <a class='notlink'>
-      <i class="fas fa-hourglass-half" aria-hidden="true"></i>
-      <p>26 min</p>
-    </a>
-  </div>
-
-
-          
-        
-          
-            
-
-          
+        <p class="current">
+          2 / 2
+        </p>
         
       </div>
-      
-        <hr>
-      
-    </div>
-  </section>
-
-
-  <section class="article typo">
-    <div class="article-entry" itemprop="articleBody">
-      <h4 id="一、Requests库的7个主要方法"><a href="#一、Requests库的7个主要方法" class="headerlink" title="一、Requests库的7个主要方法"></a>一、Requests库的7个主要方法</h4><table>
-<thead>
-<tr>
-<th align="left">方法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">requests.request()</td>
-<td>构造一个请求，支撑一下各方法的基础方法</td>
-</tr>
-<tr>
-<td align="left">requests.get()</td>
-<td>获取HTML网页的主要方法，对应于HTTP的GET</td>
-</tr>
-<tr>
-<td align="left">requests.head()</td>
-<td>获取HTML网页头信息的方法，对应于HTTP的HEAD</td>
-</tr>
-<tr>
-<td align="left">requests.post()</td>
-<td>向HTML网页提交POST请求的方法，对应于HTTP的POST</td>
-</tr>
-<tr>
-<td align="left">requests.put()</td>
-<td>向HTML网页提交PUT请求的方法，对应于HTTP的PUT</td>
-</tr>
-<tr>
-<td align="left">requests.pathch()</td>
-<td>向HTML网页提交局部修改请求，对应于HTTP的PATCH</td>
-</tr>
-<tr>
-<td align="left">requests.delete()</td>
-<td>向HTML页面提交删除请求，对应于HTTP的DELETE</td>
-</tr>
-</tbody></table>
-<h5 id="1-requests-get"><a href="#1-requests-get" class="headerlink" title="1.requests.get"></a>1.requests.get</h5><p><code>r = requests.get(url)</code></p>
-<ul>
-<li>返回一个包含服务器资源的Response<strong>对象</strong>，<strong>包含爬虫返回的全部内容</strong>(内容被封装，返回的是地址信息)</li>
-<li>构造一个向服务器请求资源的Request对象</li>
-</ul>
-<p><code>requests.get(url,params=None,**kwargs)</code></p>
-<ul>
-<li><code>url</code>:拟获取网页的<code>url</code>链接</li>
-<li><code>params</code>:url中的额外参数，字典或字节流格式，可选</li>
-<li><code>**kwargs</code>:12个控制访问的参数</li>
-</ul>
-      
-        
-          <div class="button readmore">
-            <a href="/2020/03/18/Python%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E5%85%A5%E9%97%A8/">
-              Read More <i class="fas fa-chevron-right"></i>
-            </a>
-          </div>
-        
-      
-    </div>
-  </section>
-</article>
-
-          </div>
-        
-      
-    
-  </section>
-  
     
     <!-- 根据主题中的设置决定是否在archive中针对摘要部分的MathJax公式加载mathjax.js文件 -->
     
@@ -643,8 +490,6 @@
   
 
 
-    
-  
 </div>
 <aside class='l_side'>
   
